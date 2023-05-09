@@ -10,9 +10,11 @@
     "component": "generate-react component"
   },
   "dependencies": {
+    "axios": "^1.4.0",
     "modern-normalize": "^1.1.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
+    "react-datalist-input": "^3.2.1",
     "react-dom": "^18.2.0",
     "sass": "^1.62.0",
     "styled-components": "^5.3.9"
