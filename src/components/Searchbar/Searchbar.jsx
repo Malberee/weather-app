@@ -10,7 +10,7 @@ const Searchbar = ({ onFormSubmit }) => {
 			<form onSubmit={onFormSubmit}>
 				<button type="submit">Search</button>
 				<input type="text" name="query" onChange={e => setQuery(e.target.value)} />
-			</form>
+            </form>
 		</SearchbarWrapper>
 	)
 }
