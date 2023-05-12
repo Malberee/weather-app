@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import moment from 'moment'
+import { getWeatherIcon } from '../../services/getWeatherIcon'
 import {
 	CurrentWeatherWrapper,
 	CurrentWeatherContent,
-	Location,
+	LocationWrapper,
 	Text,
 	SolarCycle,
 	WeatherWrapper,
@@ -12,97 +14,76 @@ import {
 	ToggleTempMeasure,
 	ToggleTempMeasureContainer,
 	IconWrapper,
-	Humidity
+	CurrentWeatherIconWrapper,
 } from './CurrentWeather.styled'
 import Searchbar from '../Searchbar'
-import * as Icon from '../Icons'
+import { Location, Sunset, Sunrise, Droplet } from '../Icons'
 
-const CurrentWeather = ({ current, location, forecast, getLocalTime, onSearch }) => {
-	const [checked, setChecked] = useState(localStorage.getItem('measure') === 'F' ? true : false)
+const CurrentWeather = ({
+	current,
+	location,
+	forecast,
+	getLocalTime,
+	onSearch,
+}) => {
+	const [checked, setChecked] = useState(
+		localStorage.getItem('measure') === 'F' ? true : false
+	)
 
-	const getWeatherIcon = (weather, isDay) => {
-		if (isDay) {
-			switch (weather) {
-				case 'Clear':
-					return (
-						<>
-							<SunnyClear />
-							<p>{weather}</p>
-						</>
-					)
-					break
-
-				default:
-					break
-			}
-		}
-		if (!isDay) {
-			switch (weather) {
-				case 'Clear':
-					return (
-						<>
-							<NightClear />
-							<p>{weather}</p>
-						</>
-					)
-					break
-				case 'Sunny':
-					return (
-						<>
-							<NightCloudyless />
-							<p>{weather}</p>
-						</>
-					)
-					break
-				default:
-					break
-			}
-		}
-		return <SunnyClear />
+	const convertTime12to24 = (time12h) => {
+		return moment(time12h, ['h:mm A']).format('HH:mm')
 	}
 
 	return (
 		<CurrentWeatherWrapper>
-			<Searchbar onSearch={onSearch}/>
+			<Searchbar onSearch={onSearch} />
 			{Object.keys(current).length > 0 && (
-			<>
-				<CurrentWeatherContent>
-					<Location>
-						<Text>
-							<IconWrapper>
-								<Icon.Location width="27" />
-							</IconWrapper>
-							{location.name}
-						</Text>
-						<Text>Local time: { getLocalTime(location.localtime_epoch)}</Text>
-					</Location>
-					<Icon.CloudyRainny />
-					<SolarCycle>
-						<Text>
-							<IconWrapper>
-								<Icon.Sunrise width="27" />
-							</IconWrapper>
-							{` ${forecast.astro.sunrise}`}
-						</Text>
-						<Text>
-							<IconWrapper>
-								<Icon.Sunset width="27" />
-							</IconWrapper>
-							{` ${forecast.astro.sunset}`}
-						</Text>
-					</SolarCycle>
-					<WeatherWrapper>
-						<Humidity>
-							<IconWrapper>
-								<Icon.Droplet width="27" />
-							</IconWrapper>
-							{current.humidity}%
-						</Humidity>
-						<Temp>{checked === false ? `${current.temp_c}°C` : `${current.temp_f}°F`}</Temp>
-						<Weather>{ current.condition.text}</Weather>
-					</WeatherWrapper>
-				</CurrentWeatherContent>
-			</>)}
+				<>
+					<CurrentWeatherContent>
+						<LocationWrapper>
+							<p>
+								<IconWrapper>
+									<Location width="27" />
+								</IconWrapper>
+								{location.name}
+							</p>
+							<p>Local time: {getLocalTime(location.localtime)}</p>
+						</LocationWrapper>
+						<CurrentWeatherIconWrapper>
+							<div>{getWeatherIcon(current.condition.text, current.is_day)}</div>
+						{/* <img src={current.condition.icon} alt="" /> */}
+						</CurrentWeatherIconWrapper>
+						<SolarCycle>
+							<Text>
+								<IconWrapper>
+									<Sunrise width="27" />
+								</IconWrapper>
+								{convertTime12to24(forecast.astro.sunrise)}
+							</Text>
+							<Text>
+								<IconWrapper>
+									<Sunset width="27" />
+								</IconWrapper>
+								{convertTime12to24(forecast.astro.sunset)}
+							</Text>
+						</SolarCycle>
+						<WeatherWrapper>
+							<Temp>
+								{checked === false
+									? `${current.temp_c}°C`
+									: `${current.temp_f}°F`}
+							</Temp>
+							<Weather>{current.condition.text}</Weather>
+							<Text>
+								<IconWrapper>
+									<Droplet width="27" />
+								</IconWrapper>
+								{current.humidity}%
+							</Text>
+						</WeatherWrapper>
+					</CurrentWeatherContent>
+				</>
+			)}
 
 			<ToggleTempMeasureContainer>
 				<input

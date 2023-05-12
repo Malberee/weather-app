@@ -1,7 +1,7 @@
-export const SunnyCloudy = ({ width = 32 }) => (
+export const SunnyCloudy = ({ width = 250 }) => (
 	<svg
-		width="404"
-		height="328"
+		width={width}
+		// height="328"
 		viewBox="0 0 404 328"
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"
@@ -19,7 +19,7 @@ export const SunnyCloudy = ({ width = 32 }) => (
 		/>
 		<mask
 			id="mask0_102_310"
-			style="mask-type:alpha"
+			style={{maskType: 'alpha'}}
 			maskUnits="userSpaceOnUse"
 			x="185"
 			y="81"

@@ -1,6 +1,6 @@
-export const Cloudy = ({ width = 32 }) => (
+export const Cloudy = ({ width = 250 }) => (
 	<svg
-		width="444"
+		width={width}
 		height="296"
 		viewBox="0 0 444 296"
 		fill="none"

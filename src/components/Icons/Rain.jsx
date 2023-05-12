@@ -1,7 +1,7 @@
-export const Rain = ({ width = 32 }) => (
+export const Rain = ({ width =400 }) => (
 	<svg
-		width="404"
-		height="314"
+		width={width}
+		// height="314"
 		viewBox="0 0 404 314"
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"

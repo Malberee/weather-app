@@ -4,7 +4,7 @@ import { Sunrise } from '../Icons'
 export const CurrentWeatherWrapper = styled.div`
 	width: 436px;
 	height: 762px;
-	background: rgba(40, 40, 40, 0.4);
+	background: rgba(40, 40, 40, 0.5);
 	border: 1px solid #545454;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 	backdrop-filter: blur(7.5px);
@@ -20,8 +20,21 @@ export const CurrentWeatherWrapper = styled.div`
 
 export const CurrentWeatherContent = styled.div``
 
-export const Location = styled.div`
+export const LocationWrapper = styled.div`
 	text-align: center;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 24px;
+
+	p {
+		background: linear-gradient(
+			180deg,
+			#ffffff 0%,
+			rgba(255, 255, 255, 0.5) 100%
+		);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
 `
 
 export const Text = styled.p`
@@ -33,9 +46,21 @@ export const Text = styled.p`
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 
-	font-weight: 600;
-	font-size: 20px;
-	line-height: 24px;
+	margin-top: 12px;
+
+	font-weight: 500;
+	font-size: 24px;
+	line-height: 29px;
+`
+
+export const CurrentWeatherIconWrapper = styled.div`
+	/* width: 200px;
+	height: 200px; */
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 `
 
 export const SolarCycle = styled.div`
@@ -54,20 +79,6 @@ export const WeatherWrapper = styled.div`
 	font-weight: 600;
 `
 
-export const Humidity = styled.p`
-	display: inline;
-	margin-right: 14px;
-	background: linear-gradient(
-		180deg,
-		#ffffff 0%,
-		rgba(255, 255, 255, 0.5) 100%
-	);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-
-	margin-bottom: 18px;
-`
-
 export const Temp = styled.h2`
 	display: inline-block;
 	background: linear-gradient(
@@ -79,6 +90,8 @@ export const Temp = styled.h2`
 	-webkit-text-fill-color: transparent;
 
 	font-weight: 700;
+	font-size: 50px;
+	line-height: 61px;
 	margin-bottom: 14px;
 `
 
@@ -92,6 +105,8 @@ export const Weather = styled.h3`
 	-webkit-text-fill-color: transparent;
 
 	font-weight: 700;
+	font-size: 30px;
+	line-height: 37px;
 `
 
 export const ToggleTempMeasureContainer = styled.label`
@@ -113,20 +128,16 @@ export const ToggleTempMeasureContainer = styled.label`
 	cursor: pointer;
 
 	color: white;
-	background: radial-gradient(
-		50% 50% at 50% 50%,
-		rgba(40, 40, 40, 0.5) 0%,
-		#282828 100%
-	);
+	background-color: #282828;
 
 	& p {
 		background: linear-gradient(
-		180deg,
-		#ffffff 0%,
-		rgba(255, 255, 255, 0.5) 100%
-	);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+			180deg,
+			#ffffff 0%,
+			rgba(255, 255, 255, 0.5) 100%
+		);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
 	}
 
 	& input {

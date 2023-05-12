@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react'
 import DatalistInput from 'react-datalist-input'
 import { getWeather } from '../services/getWeather'
 import { getUserLocation } from '../services/getUserLocation'
-import axios from 'axios'
+import moment from 'moment'
+import ukLocale from 'moment/locale/uk'
 import './App.scss'
 import CurrentWeather from './CurrentWeather'
 // import ForecastWeather from './ForecastWeather'
@@ -18,8 +19,8 @@ const App = () => {
 	}
 
 	const getLocalTime = (time) => {
-		const epochToDate = new Date(time * 1000)
-		return epochToDate.toLocaleTimeString()
+		moment.locale('uk')
+		return moment(time).format('LT')
 	}
 
 	useEffect(() => {

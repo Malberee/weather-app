@@ -1,6 +1,6 @@
-export const Thunder = ({ width = 32 }) => (
+export const Thunder = ({ width = 250 }) => (
 	<svg
-		width="404"
+		width={width}
 		height="390"
 		viewBox="0 0 404 390"
 		fill="none"

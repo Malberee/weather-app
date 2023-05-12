@@ -1,7 +1,7 @@
-export const NightRain = ({ width = 32 }) => (
+export const NightRain = ({ width = 250 }) => (
 	<svg
-		width="404"
-		height="407"
+		width={width}
+		// height="407"
 		viewBox="0 0 404 407"
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"

@@ -1,7 +1,7 @@
-export const NightClear = ({ width = 32 }) => (
+export const NightClear = ({ width = 250 }) => (
 	<svg
-		width="284"
-		height="269"
+		width={width}
+		// height="269"
 		viewBox="0 0 284 269"
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"

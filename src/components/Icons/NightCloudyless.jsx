@@ -1,7 +1,7 @@
-export const NightCloudyless = ({ width = 32 }) => (
+export const NightCloudyless = ({ width = 250 }) => (
 	<svg
-		width="372"
-		height="326"
+		width={width}
+		// height="326"
 		viewBox="0 0 372 326"
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"

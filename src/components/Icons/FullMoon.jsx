@@ -1,7 +1,7 @@
-export const FullMoon = ({ width = 32 }) => (
+export const FullMoon = ({ width = 250 }) => (
 	<svg
-		width="272"
-		height="267"
+		width={width}
+		// height="267"
 		viewBox="0 0 272 267"
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"

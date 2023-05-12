@@ -1,7 +1,7 @@
-export const Fog = ({ width = 32 }) => (
+export const Fog = ({ width = 250 }) => (
 	<svg
-		width="404"
-		height="327"
+		width={width}
+		// height="327"
 		viewBox="0 0 404 327"
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"

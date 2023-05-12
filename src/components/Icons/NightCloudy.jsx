@@ -1,7 +1,7 @@
-export const NightCloudy = ({ width = 32 }) => (
+export const NightCloudy = ({ width = 250 }) => (
 	<svg
-		width="404"
-		height="367"
+		width={width}
+		// height="367"
 		viewBox="0 0 404 367"
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +28,7 @@ export const NightCloudy = ({ width = 32 }) => (
 		</g>
 		<mask
 			id="mask0_102_353"
-			style="mask-type:alpha"
+			style={{maskType: 'alpha'}}
 			maskUnits="userSpaceOnUse"
 			x="185"
 			y="120"
