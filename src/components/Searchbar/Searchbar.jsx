@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
+import { getUserLocation } from '../../services/getUserLocation'
 import { Search, Target } from '../Icons'
-
 import {
 	SearchbarWrapper,
 	SubmitButton,
@@ -9,14 +9,14 @@ import {
 	SearchField,
 } from './Searchbar.styled'
 
-const Searchbar = ({ onFormSubmit }) => {
+const Searchbar = ({ onSearch }) => {
 	const [query, setQuery] = useState('')
 
 	return (
 		<SearchbarWrapper
 			onSubmit={(e) => {
 				e.preventDefault()
-				onFormSubmit(query)
+				onSearch(query)
 			}}
 		>
 			<SearchField
@@ -28,7 +28,10 @@ const Searchbar = ({ onFormSubmit }) => {
 			<SubmitButton type="submit">
 				<Search width={17} />
 			</SubmitButton>
-			<TargetButton type="button">
+			<TargetButton type="button" onClick={async () => {
+				const userCity = await getUserLocation()
+				onSearch(userCity)
+			}}>
 				<Target width={17} />
 			</TargetButton>
 		</SearchbarWrapper>

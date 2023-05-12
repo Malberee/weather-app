@@ -17,7 +17,7 @@ import {
 import Searchbar from '../Searchbar'
 import * as Icon from '../Icons'
 
-const CurrentWeather = ({ current, location, forecast, getLocalTime, onFormSubmit }) => {
+const CurrentWeather = ({ current, location, forecast, getLocalTime, onSearch }) => {
 	const [checked, setChecked] = useState(localStorage.getItem('measure') === 'F' ? true : false)
 
 	const getWeatherIcon = (weather, isDay) => {
@@ -63,7 +63,7 @@ const CurrentWeather = ({ current, location, forecast, getLocalTime, onFormSubmi
 
 	return (
 		<CurrentWeatherWrapper>
-			<Searchbar onFormSubmit={onFormSubmit}/>
+			<Searchbar onSearch={onSearch}/>
 			{Object.keys(current).length > 0 && (
 			<>
 				<CurrentWeatherContent>

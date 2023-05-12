@@ -13,7 +13,7 @@ const App = () => {
 	const [weather, setWeather] = useState({})
 	const [forecast, setForecast] = useState({})
 
-	const onFormSubmit = async (newQuery) => {
+	const onSearch = async (newQuery) => {
 		setQuery(newQuery)
 	}
 
@@ -23,7 +23,11 @@ const App = () => {
 	}
 
 	useEffect(() => {
-		console.log(getUserLocation())
+		async function fetchData() {
+			const userCity = await getUserLocation()
+			setQuery(userCity)
+		}
+		fetchData()
 	}, [])
 
 	useEffect(() => {
@@ -47,7 +51,7 @@ const App = () => {
 					location={location}
 					forecast={forecast}
 					getLocalTime={getLocalTime}
-					onFormSubmit={onFormSubmit}
+					onSearch={onSearch}
 				/>
 				{/* <ForecastWeather forecast={forecast} getLocalTime={getLocalTime} /> */}
 			</>
