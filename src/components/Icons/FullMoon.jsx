@@ -28,9 +28,9 @@ export const FullMoon = ({ width = 32 }) => (
 				width="271.201"
 				height="265.201"
 				filterUnits="userSpaceOnUse"
-				color-interpolation-filters="sRGB"
+				colorInterpolationFilters="sRGB"
 			>
-				<feFlood flood-opacity="0" result="BackgroundImageFix" />
+				<feFlood floodOpacity="0" result="BackgroundImageFix" />
 				<feGaussianBlur in="BackgroundImageFix" stdDeviation="7" />
 				<feComposite
 					in2="SourceAlpha"
@@ -100,7 +100,7 @@ export const FullMoon = ({ width = 32 }) => (
 				gradientUnits="userSpaceOnUse"
 			>
 				<stop stopColor="white" />
-				<stop offset="1" stopColor="white" stop-opacity="0" />
+				<stop offset="1" stopColor="white" stopOpacity="0" />
 			</linearGradient>
 		</defs>
 	</svg>

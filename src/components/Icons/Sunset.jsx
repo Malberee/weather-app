@@ -1,7 +1,6 @@
-export const Sunset = ({ width = 32 }) => (
+export const Sunset = ({ width = 27 }) => (
 	<svg
-		width="27"
-		height="27"
+		width={width}
 		viewBox="0 0 27 27"
 		fill="url(#icon-gradient) white"
 		xmlns="http://www.w3.org/2000/svg"

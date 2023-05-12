@@ -9,13 +9,13 @@ export const NightClear = ({ width = 32 }) => (
 		<g filter="url(#filter0_bdd_102_484)">
 			<mask id="path-1-inside-1_102_484" fill="white">
 				<path
-					fill-rule="evenodd"
+					fillRule="evenodd"
 					clipRule="evenodd"
 					d="M140.339 42.4557C143.792 41.9443 145.853 46.018 143.943 48.9404C131.004 68.7381 128.781 94.7363 140.373 117.271C155.668 147.007 189.856 160.682 220.736 151.176C224.075 150.149 227.421 153.261 225.97 156.439C218.671 172.424 206.149 186.162 189.311 194.823C149.481 215.311 100.583 199.63 80.0959 159.8C59.6084 119.97 75.2888 71.0725 115.119 50.585C123.254 46.4007 131.767 43.7251 140.339 42.4557Z"
 				/>
 			</mask>
 			<path
-				fill-rule="evenodd"
+				fillRule="evenodd"
 				clipRule="evenodd"
 				d="M140.339 42.4557C143.792 41.9443 145.853 46.018 143.943 48.9404C131.004 68.7381 128.781 94.7363 140.373 117.271C155.668 147.007 189.856 160.682 220.736 151.176C224.075 150.149 227.421 153.261 225.97 156.439C218.671 172.424 206.149 186.162 189.311 194.823C149.481 215.311 100.583 199.63 80.0959 159.8C59.6084 119.97 75.2888 71.0725 115.119 50.585C123.254 46.4007 131.767 43.7251 140.339 42.4557Z"
 				fill="url(#paint0_linear_102_484)"
@@ -78,9 +78,9 @@ export const NightClear = ({ width = 32 }) => (
 				width="264.22"
 				height="264.41"
 				filterUnits="userSpaceOnUse"
-				color-interpolation-filters="sRGB"
+				colorInterpolationFilters="sRGB"
 			>
-				<feFlood flood-opacity="0" result="BackgroundImageFix" />
+				<feFlood floodOpacity="0" result="BackgroundImageFix" />
 				<feGaussianBlur in="BackgroundImageFix" stdDeviation="7" />
 				<feComposite
 					in2="SourceAlpha"
@@ -137,9 +137,9 @@ export const NightClear = ({ width = 32 }) => (
 				width="127.854"
 				height="127.855"
 				filterUnits="userSpaceOnUse"
-				color-interpolation-filters="sRGB"
+				colorInterpolationFilters="sRGB"
 			>
-				<feFlood flood-opacity="0" result="BackgroundImageFix" />
+				<feFlood floodOpacity="0" result="BackgroundImageFix" />
 				<feGaussianBlur in="BackgroundImageFix" stdDeviation="7" />
 				<feComposite
 					in2="SourceAlpha"
@@ -196,9 +196,9 @@ export const NightClear = ({ width = 32 }) => (
 				width="139.854"
 				height="139.855"
 				filterUnits="userSpaceOnUse"
-				color-interpolation-filters="sRGB"
+				colorInterpolationFilters="sRGB"
 			>
-				<feFlood flood-opacity="0" result="BackgroundImageFix" />
+				<feFlood floodOpacity="0" result="BackgroundImageFix" />
 				<feGaussianBlur in="BackgroundImageFix" stdDeviation="7" />
 				<feComposite
 					in2="SourceAlpha"
@@ -255,9 +255,9 @@ export const NightClear = ({ width = 32 }) => (
 				width="121.854"
 				height="121.855"
 				filterUnits="userSpaceOnUse"
-				color-interpolation-filters="sRGB"
+				colorInterpolationFilters="sRGB"
 			>
-				<feFlood flood-opacity="0" result="BackgroundImageFix" />
+				<feFlood floodOpacity="0" result="BackgroundImageFix" />
 				<feGaussianBlur in="BackgroundImageFix" stdDeviation="7" />
 				<feComposite
 					in2="SourceAlpha"
@@ -314,9 +314,9 @@ export const NightClear = ({ width = 32 }) => (
 				width="121.854"
 				height="121.855"
 				filterUnits="userSpaceOnUse"
-				color-interpolation-filters="sRGB"
+				colorInterpolationFilters="sRGB"
 			>
-				<feFlood flood-opacity="0" result="BackgroundImageFix" />
+				<feFlood floodOpacity="0" result="BackgroundImageFix" />
 				<feGaussianBlur in="BackgroundImageFix" stdDeviation="7" />
 				<feComposite
 					in2="SourceAlpha"
@@ -386,7 +386,7 @@ export const NightClear = ({ width = 32 }) => (
 				gradientUnits="userSpaceOnUse"
 			>
 				<stop stopColor="white" />
-				<stop offset="1" stopColor="white" stop-opacity="0" />
+				<stop offset="1" stopColor="white" stopOpacity="0" />
 			</linearGradient>
 			<linearGradient
 				id="paint2_linear_102_484"
@@ -408,7 +408,7 @@ export const NightClear = ({ width = 32 }) => (
 				gradientUnits="userSpaceOnUse"
 			>
 				<stop stopColor="white" />
-				<stop offset="1" stopColor="white" stop-opacity="0" />
+				<stop offset="1" stopColor="white" stopOpacity="0" />
 			</linearGradient>
 			<linearGradient
 				id="paint4_linear_102_484"
@@ -430,7 +430,7 @@ export const NightClear = ({ width = 32 }) => (
 				gradientUnits="userSpaceOnUse"
 			>
 				<stop stopColor="white" />
-				<stop offset="1" stopColor="white" stop-opacity="0" />
+				<stop offset="1" stopColor="white" stopOpacity="0" />
 			</linearGradient>
 			<linearGradient
 				id="paint6_linear_102_484"
@@ -452,7 +452,7 @@ export const NightClear = ({ width = 32 }) => (
 				gradientUnits="userSpaceOnUse"
 			>
 				<stop stopColor="white" />
-				<stop offset="1" stopColor="white" stop-opacity="0" />
+				<stop offset="1" stopColor="white" stopOpacity="0" />
 			</linearGradient>
 			<linearGradient
 				id="paint8_linear_102_484"
@@ -474,7 +474,7 @@ export const NightClear = ({ width = 32 }) => (
 				gradientUnits="userSpaceOnUse"
 			>
 				<stop stopColor="white" />
-				<stop offset="1" stopColor="white" stop-opacity="0" />
+				<stop offset="1" stopColor="white" stopOpacity="0" />
 			</linearGradient>
 		</defs>
 	</svg>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import DatalistInput from 'react-datalist-input'
 import { getWeather } from '../services/getWeather'
+import { getUserLocation } from '../services/getUserLocation'
 import axios from 'axios'
 import './App.scss'
 import CurrentWeather from './CurrentWeather'
@@ -12,15 +13,18 @@ const App = () => {
 	const [weather, setWeather] = useState({})
 	const [forecast, setForecast] = useState({})
 
-	const onFormSubmit = async (e) => {
-		e.preventDefault()
-		setQuery(e.currentTarget.elements.query.value)
+	const onFormSubmit = async (newQuery) => {
+		setQuery(newQuery)
 	}
 
 	const getLocalTime = (time) => {
 		const epochToDate = new Date(time * 1000)
 		return epochToDate.toLocaleTimeString()
 	}
+
+	useEffect(() => {
+		console.log(getUserLocation())
+	}, [])
 
 	useEffect(() => {
 		async function fetchData() {
@@ -37,14 +41,16 @@ const App = () => {
 
 	return (
 		<>
-				<>
-					<CurrentWeather
-						current={weather}
-						location={location}
-						getLocalTime={getLocalTime}
-					/>
-					{/* <ForecastWeather forecast={forecast} getLocalTime={getLocalTime} /> */}
-				</>
+			<>
+				<CurrentWeather
+					current={weather}
+					location={location}
+					forecast={forecast}
+					getLocalTime={getLocalTime}
+					onFormSubmit={onFormSubmit}
+				/>
+				{/* <ForecastWeather forecast={forecast} getLocalTime={getLocalTime} /> */}
+			</>
 		</>
 	)
 }

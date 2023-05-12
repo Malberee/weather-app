@@ -1,7 +1,7 @@
 export const Target = ({ width = 32 }) => (
 	<svg
-		width="27"
-		height="27"
+		width={width}
+		// height="27"
 		viewBox="0 0 27 27"
 		fill="url(#icon-gradient) white"
 		xmlns="http://www.w3.org/2000/svg"

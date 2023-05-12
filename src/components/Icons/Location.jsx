@@ -1,7 +1,7 @@
-export const Location = ({ width = 32 }) => (
+export const Location = ({ width = 27 }) => (
 	<svg
-		width="27"
-		height="27"
+		width={width}
+		// height="27"
 		viewBox="0 0 27 27"
 		fill="none"
 		stroke="url(#icon-gradient) white"

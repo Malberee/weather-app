@@ -13,7 +13,19 @@ export const SubmitButton = styled.button`
 	cursor: pointer;
 	width: 16px;
 	height: 16px;
-	padding: 0;
+	
+`
+
+export const TargetButton = styled.button`
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	border: transparent;
+	background-color: transparent;
+	cursor: pointer;
+	width: 16px;
+	height: 16px;
+
 `
 
 export const SearchField = styled.input`
@@ -21,8 +33,14 @@ export const SearchField = styled.input`
 	box-sizing: border-box;
 	padding: 8px;
 	padding-left: 29px;
-	background: rgba(40, 40, 40, 0.3);
-	border: 0.5px solid #545454;
-	backdrop-filter: blur(2px);
 	border-radius: 14px;
+
+	border: 0.5px solid #545454;
+	background: rgba(40, 40, 40, 0.3);
+	backdrop-filter: blur(2px);
+	color: white;
+
+	&:focus {
+		outline: transparent;
+	}
 `

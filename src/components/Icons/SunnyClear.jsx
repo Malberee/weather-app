@@ -12,7 +12,7 @@ export const SunnyClear = ({ width = 32 }) => (
 				cy="176.62"
 				r="76.6203"
 				fill="#FFC701"
-				fill-opacity="0.35"
+				fillOpacity="0.35"
 			/>
 		</g>
 		<circle
@@ -40,7 +40,7 @@ export const SunnyClear = ({ width = 32 }) => (
 		<g mask="url(#mask0_102_442)">
 			<g filter="url(#filter1_f_102_442)">
 				<path
-					fill-rule="evenodd"
+					fillRule="evenodd"
 					clipRule="evenodd"
 					d="M289.667 314.788C289.667 344.618 265.485 368.799 235.656 368.799C235.446 368.799 235.237 368.798 235.028 368.796V368.799H45.361L45.3634 368.796C45.1535 368.799 44.9433 368.8 44.7328 368.8C14.9033 368.8 -9.27832 344.618 -9.27832 314.789C-9.27832 284.959 14.9033 260.778 44.7328 260.778C70.4449 260.778 91.9606 278.744 97.4104 302.808L115.701 279.618L172.852 260.777H235.028V260.781C235.237 260.778 235.446 260.777 235.656 260.777C265.485 260.777 289.667 284.959 289.667 314.788Z"
 					fill="#E18700"
@@ -55,9 +55,9 @@ export const SunnyClear = ({ width = 32 }) => (
 				width="353.241"
 				height="353.241"
 				filterUnits="userSpaceOnUse"
-				color-interpolation-filters="sRGB"
+				colorInterpolationFilters="sRGB"
 			>
-				<feFlood flood-opacity="0" result="BackgroundImageFix" />
+				<feFlood floodOpacity="0" result="BackgroundImageFix" />
 				<feBlend
 					mode="normal"
 					in="SourceGraphic"
@@ -76,9 +76,9 @@ export const SunnyClear = ({ width = 32 }) => (
 				width="326.945"
 				height="136.023"
 				filterUnits="userSpaceOnUse"
-				color-interpolation-filters="sRGB"
+				colorInterpolationFilters="sRGB"
 			>
-				<feFlood flood-opacity="0" result="BackgroundImageFix" />
+				<feFlood floodOpacity="0" result="BackgroundImageFix" />
 				<feBlend
 					mode="normal"
 					in="SourceGraphic"
@@ -110,7 +110,7 @@ export const SunnyClear = ({ width = 32 }) => (
 				gradientUnits="userSpaceOnUse"
 			>
 				<stop stopColor="white" />
-				<stop offset="1" stopColor="white" stop-opacity="0" />
+				<stop offset="1" stopColor="white" stopOpacity="0" />
 			</linearGradient>
 			<linearGradient
 				id="paint2_linear_102_442"
