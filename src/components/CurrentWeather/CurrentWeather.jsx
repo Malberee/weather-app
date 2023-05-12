@@ -1,23 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { CurrentWeatherWrapper } from './CurrentWeather.styled'
 import {
-	SunnyClear,
-	SunnyCloudyless,
-	SunnyCloudy,
-	Cloudy,
-	Rain,
-	Thunder,
-	CloudyRainny,
-	HeavyrainStorm,
-	NightCloudy,
-	NightCloudyless,
-	NightClear,
-	FullMoon,
-	NightRain,
-} from '../Icon'
+	CurrentWeatherWrapper,
+	Location,
+	Text,
+	SolarCycle,
+	WeatherWrapper,
+	Temp,
+	Weather,
+	ToggleTempMeasure,
+	ToggleTempMeasureContainer,
+} from './CurrentWeather.styled'
+import Searchbar from '../Searchbar'
+import * as Icon from '../Icons'
 
-const CurrentWeather = ({ current, location }) => {
+const CurrentWeather = ({ current, location, getLocalTime }) => {
 	const getWeatherIcon = (weather, isDay) => {
 		if (isDay) {
 			switch (weather) {
@@ -56,23 +53,32 @@ const CurrentWeather = ({ current, location }) => {
 					break
 			}
 		}
-	}
-
-	const getLocalTime = (time) => {
-		const epochToDate = new Date(time * 1000)
-		return epochToDate.toLocaleTimeString()
+		return <SunnyClear />
 	}
 
 	return (
 		<CurrentWeatherWrapper>
-			{getWeatherIcon(current.condition.text, location.is_day)}
-			<h1>{current.temp_c}℃</h1>
-			<h3>
-				{location.country}, {location.name}
-			</h3>
-			<p>
-				Local time <span>{getLocalTime(location.localtime_epoch)}</span>
-			</p>
+			<Searchbar />
+			<Location>
+				<Text>[ICON] [CITY]</Text>
+				<Text>Local time: [TIME]</Text>
+			</Location>
+
+			{/* ICON */}
+			<SolarCycle>
+				<Text>[ICON] [TIME]</Text>
+				<Text>[ICON] [TIME]</Text>
+			</SolarCycle>
+			<WeatherWrapper>
+				<Text>[HUMIDITY]</Text>
+				<Temp>[TEMP] [℃/℉]</Temp>
+				<Weather>[WEATHER]</Weather>
+			</WeatherWrapper>
+
+			<ToggleTempMeasureContainer>
+				<input type="checkbox" />
+				<ToggleTempMeasure measure="F"></ToggleTempMeasure>
+			</ToggleTempMeasureContainer>
 		</CurrentWeatherWrapper>
 	)
 }

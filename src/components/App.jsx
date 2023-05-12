@@ -3,9 +3,8 @@ import DatalistInput from 'react-datalist-input'
 import { getWeather } from '../services/getWeather'
 import axios from 'axios'
 import './App.scss'
-import Searchbar from './Searchbar'
 import CurrentWeather from './CurrentWeather'
-import ForecastWeather from './ForecastWeather'
+// import ForecastWeather from './ForecastWeather'
 
 const App = () => {
 	const [query, setQuery] = useState('')
@@ -16,6 +15,11 @@ const App = () => {
 	const onFormSubmit = async (e) => {
 		e.preventDefault()
 		setQuery(e.currentTarget.elements.query.value)
+	}
+
+	const getLocalTime = (time) => {
+		const epochToDate = new Date(time * 1000)
+		return epochToDate.toLocaleTimeString()
 	}
 
 	useEffect(() => {
@@ -33,11 +37,14 @@ const App = () => {
 
 	return (
 		<>
-			<Searchbar onFormSubmit={onFormSubmit} />
-			{Object.keys(weather).length > 0 && (
-				<CurrentWeather current={weather} location={location} />
-			)}
-			<ForecastWeather forecast={forecast} />
+				<>
+					<CurrentWeather
+						current={weather}
+						location={location}
+						getLocalTime={getLocalTime}
+					/>
+					{/* <ForecastWeather forecast={forecast} getLocalTime={getLocalTime} /> */}
+				</>
 		</>
 	)
 }

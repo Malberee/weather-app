@@ -1,16 +1,23 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import { SearchbarWrapper } from './Searchbar.styled'
+import { Search, Droplet, Location, Target, Sunrise, Sunset } from '../Icons'
+
+import { SearchbarWrapper, SubmitButton, SearchField } from './Searchbar.styled'
 
 const Searchbar = ({ onFormSubmit }) => {
 	const [query, setQuery] = useState('')
 
 	return (
-		<SearchbarWrapper>
-			<form onSubmit={onFormSubmit}>
-				<button type="submit">Search</button>
-				<input type="text" name="query" onChange={e => setQuery(e.target.value)} />
-            </form>
+		<SearchbarWrapper onSubmit={onFormSubmit}>
+			<SearchField
+				type="text"
+				name="query"
+				placeholder="City"
+				onChange={(e) => setQuery(e.target.value)}
+			/>
+			<SubmitButton type="submit">
+				<Search width={16}/>
+			</SubmitButton>
 		</SearchbarWrapper>
 	)
 }
