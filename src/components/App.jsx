@@ -20,7 +20,7 @@ const App = () => {
 
 	const getLocalTime = (time) => {
 		moment.locale('uk')
-		return moment(time, ['h:mm A']).format('HH:mm')
+		return moment(time).format('HH:mm')
 	}
 
 	useEffect(() => {
