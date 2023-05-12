@@ -1,7 +1,7 @@
 export const Thunder = ({ width = 250 }) => (
 	<svg
 		width={width}
-		height="390"
+		// height="390"
 		viewBox="0 0 404 390"
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"
