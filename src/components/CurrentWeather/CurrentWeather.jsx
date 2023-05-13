@@ -45,13 +45,15 @@ const CurrentWeather = ({
 								<IconWrapper>
 									<Location width="27" />
 								</IconWrapper>
-								{location.name}
+								{location.country}, {location.name}
 							</p>
 							<p>Local time: {getLocalTime(location.localtime)}</p>
 						</LocationWrapper>
 						<CurrentWeatherIconWrapper>
-							<div>{getWeatherIcon(current.condition.text, current.is_day)}</div>
-						{/* <img src={current.condition.icon} alt="" /> */}
+							<div>
+								{getWeatherIcon(current.condition.text, current.is_day)}
+							</div>
+							{/* <img src={current.condition.icon} alt="" /> */}
 						</CurrentWeatherIconWrapper>
 						<SolarCycle>
 							<Text>

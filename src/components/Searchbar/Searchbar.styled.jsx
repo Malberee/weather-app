@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 
 export const SearchbarWrapper = styled.form`
 	position: relative;
@@ -26,27 +27,42 @@ export const TargetButton = styled.button`
 	height: 16px;
 `
 
-export const SearchField = styled.input`
-	width: 100%;
-	box-sizing: border-box;
-	padding: 8px;
-	padding-left: 29px;
-	border-radius: 14px;
-
-	border: 0.5px solid #545454;
-	background: rgba(40, 40, 40, 0.3);
-	backdrop-filter: blur(2px);
-	color: white;
-
-	&:focus {
-		outline: transparent;
+export const SearchField = styled(ReactSearchAutocomplete)`
+	.wrapper {
+		div {
+			ul {
+				li {
+					cursor: pointer;
+				}
+			}
+		}
 	}
 
-	&:-webkit-autofill,
-	&:-webkit-autofill:hover,
-	&:-webkit-autofill:focus,
-	&:-webkit-autofill:active {
-		-webkit-transition: 'color 9999s ease-out, background-color 9999s ease-out';
-		-webkit-transition-delay: 9999s;
+	input {
+		width: 100%;
+		height: 33px;
+		box-sizing: border-box;
+		padding: 8px;
+		padding-left: 29px;
+		/* border-radius: 14px; */
+		/* border: 0.5px solid #545454; */
+
+		&:focus {
+			outline: transparent;
+		}
+
+		&:-webkit-autofill,
+		&:-webkit-autofill:hover,
+		&:-webkit-autofill:focus,
+		&:-webkit-autofill:active {
+			-webkit-transition: 'color 9999s ease-out, background-color 9999s ease-out';
+			-webkit-transition-delay: 9999s;
+		}
+	}
+`
+
+export const AutocompleteItem = styled.span`
+	&:hover {
+		background-color: transparent;
 	}
 `

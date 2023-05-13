@@ -24,11 +24,11 @@ const App = () => {
 	}
 
 	useEffect(() => {
-		async function fetchData() {
-			const userCity = await getUserLocation()
-			setQuery(userCity)
-		}
-		fetchData()
+		// async function fetchData() {
+		// 	const userCity = await getUserLocation()
+		// 	setQuery(userCity)
+		// }
+		// fetchData()
 	}, [])
 
 	useEffect(() => {
