@@ -13,7 +13,6 @@ export const SubmitButton = styled.button`
 	cursor: pointer;
 	width: 16px;
 	height: 16px;
-	
 `
 
 export const TargetButton = styled.button`
@@ -25,7 +24,6 @@ export const TargetButton = styled.button`
 	cursor: pointer;
 	width: 16px;
 	height: 16px;
-
 `
 
 export const SearchField = styled.input`
@@ -42,5 +40,13 @@ export const SearchField = styled.input`
 
 	&:focus {
 		outline: transparent;
+	}
+
+	&:-webkit-autofill,
+	&:-webkit-autofill:hover,
+	&:-webkit-autofill:focus,
+	&:-webkit-autofill:active {
+		-webkit-transition: 'color 9999s ease-out, background-color 9999s ease-out';
+		-webkit-transition-delay: 9999s;
 	}
 `

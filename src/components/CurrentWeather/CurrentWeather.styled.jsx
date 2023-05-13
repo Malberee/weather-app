@@ -54,8 +54,9 @@ export const Text = styled.p`
 `
 
 export const CurrentWeatherIconWrapper = styled.div`
-	/* width: 200px;
-	height: 200px; */
+	/* width: 200px; */
+	height: 270px;
+	margin-top: 14px;
 	margin-left: auto;
 	margin-right: auto;
 	display: flex;
@@ -92,7 +93,6 @@ export const Temp = styled.h2`
 	font-weight: 700;
 	font-size: 50px;
 	line-height: 61px;
-	margin-bottom: 14px;
 `
 
 export const Weather = styled.h3`

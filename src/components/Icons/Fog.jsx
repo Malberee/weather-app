@@ -1,4 +1,4 @@
-export const Fog = ({ width = 250 }) => (
+export const Fog = ({ width = 350 }) => (
 	<svg
 		width={width}
 		// height="327"

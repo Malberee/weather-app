@@ -1,4 +1,4 @@
-export const Thunder = ({ width = 250 }) => (
+export const Thunder = ({ width = 350 }) => (
 	<svg
 		width={width}
 		// height="390"

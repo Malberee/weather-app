@@ -1,4 +1,4 @@
-export const NightCloudy = ({ width = 250 }) => (
+export const NightCloudy = ({ width = 350 }) => (
 	<svg
 		width={width}
 		// height="367"
@@ -28,7 +28,7 @@ export const NightCloudy = ({ width = 250 }) => (
 		</g>
 		<mask
 			id="mask0_102_353"
-			style={{maskType: 'alpha'}}
+			style={{ maskType: 'alpha' }}
 			maskUnits="userSpaceOnUse"
 			x="185"
 			y="120"

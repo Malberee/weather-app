@@ -1,4 +1,4 @@
-export const FullMoon = ({ width = 250 }) => (
+export const FullMoon = ({ width = 350 }) => (
 	<svg
 		width={width}
 		// height="267"

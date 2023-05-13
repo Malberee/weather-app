@@ -1,4 +1,4 @@
-export const Rain = ({ width =400 }) => (
+export const Rain = ({ width = 350 }) => (
 	<svg
 		width={width}
 		// height="314"
