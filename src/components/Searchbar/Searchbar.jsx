@@ -55,7 +55,7 @@ const Searchbar = ({ onSearch }) => {
 
 					borderRadius: '14px',
 					border: '0.5px solid #545454',
-					backgroundColor: 'rgba(40, 40, 40, 0.4)',
+					backgroundColor: 'rgba(40, 40, 40, 0.6)',
 					backdropFilter: 'blur(2px)',
 					color: 'white',
 				}}

@@ -29,6 +29,10 @@ export const TargetButton = styled.button`
 
 export const SearchField = styled(ReactSearchAutocomplete)`
 	.wrapper {
+		&:hover,
+		&:focus-within {
+			box-shadow: none;
+		}
 		div {
 			ul {
 				li {
@@ -44,8 +48,6 @@ export const SearchField = styled(ReactSearchAutocomplete)`
 		box-sizing: border-box;
 		padding: 8px;
 		padding-left: 29px;
-		/* border-radius: 14px; */
-		/* border: 0.5px solid #545454; */
 
 		&:focus {
 			outline: transparent;

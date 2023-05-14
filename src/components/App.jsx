@@ -13,6 +13,7 @@ const App = () => {
 	const [location, setLocation] = useState({})
 	const [weather, setWeather] = useState({})
 	const [forecast, setForecast] = useState({})
+	const [isLoading, setIsLoading] = useState(false)
 
 	const onSearch = async (newQuery) => {
 		setQuery(newQuery)
@@ -27,7 +28,9 @@ const App = () => {
 		// async function fetchData() {
 		// 	const userCity = await getUserLocation()
 		// 	setQuery(userCity)
+		// setIsLoading((prevState) => !prevState)
 		// }
+		// setIsLoading(prevState => !prevState)
 		// fetchData()
 	}, [])
 
@@ -38,9 +41,11 @@ const App = () => {
 			setWeather(response.current)
 			setLocation(response.location)
 			setForecast(response.forecast.forecastday[0])
+			setIsLoading((prevState) => !prevState)
 		}
-		if (query !== '') {
+		if (query.trim() !== '') {
 			fetchData()
+			setIsLoading((prevState) => !prevState)
 		}
 	}, [query])
 
@@ -53,6 +58,7 @@ const App = () => {
 					forecast={forecast}
 					getLocalTime={getLocalTime}
 					onSearch={onSearch}
+					isLoading={isLoading}
 				/>
 				{/* <ForecastWeather forecast={forecast} getLocalTime={getLocalTime} /> */}
 			</>
