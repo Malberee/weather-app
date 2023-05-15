@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { ReactSearchAutocomplete } from 'react-search-autocomplete'
-import { getUserLocation } from '../../services/getUserLocation'
 import { getCities } from '../../services/getCities'
 import { Search, Target } from '../Icons'
 import {
@@ -9,10 +7,9 @@ import {
 	SubmitButton,
 	TargetButton,
 	SearchField,
-	AutocompleteItem,
 } from './Searchbar.styled'
 
-const Searchbar = ({ onSearch }) => {
+const Searchbar = ({ onSearch, getUserCity }) => {
 	const [query, setQuery] = useState('')
 	const [citiesAutocomplete, setCitiesAutocomplete] = useState([])
 
@@ -37,14 +34,12 @@ const Searchbar = ({ onSearch }) => {
 		>
 			<SearchField
 				items={citiesAutocomplete}
-				
 				placeholder="City"
 				resultStringKeyName="title"
 				fuseOptions={{ keys: ['title'] }}
 				inputDebounce={0}
 				onSearch={(newQuery) => setQuery(newQuery)}
 				onSelect={(item) => {
-					console.log(item.title)
 					setQuery(item.title)
 					onSearch(item.title)
 				}}
@@ -61,22 +56,10 @@ const Searchbar = ({ onSearch }) => {
 					color: 'white',
 				}}
 			/>
-			{/* <SearchField
-				type="text"
-				name="query"
-				placeholder="City"
-				onChange={onInputChange}
-			/> */}
 			<SubmitButton type="submit">
 				<Search width={17} />
 			</SubmitButton>
-			<TargetButton
-				type="button"
-				onClick={async () => {
-					const userCity = await getUserLocation()
-					onSearch(userCity)
-				}}
-			>
+			<TargetButton type="button" onClick={() => getUserCity()}>
 				<Target width={17} />
 			</TargetButton>
 		</SearchbarWrapper>

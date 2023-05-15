@@ -7,5 +7,4 @@ export const getUserLocation = async () => {
 		.get(`https://api.geoapify.com/v1/ipinfo?&apiKey=${API_KEY}`)
 		.then((res) => res.data.city.name)
 	return userCity
-
 }

@@ -27,6 +27,7 @@ const CurrentWeather = ({
 	getLocalTime,
 	onSearch,
 	isLoading,
+	getUserCity,
 }) => {
 	const [checked, setChecked] = useState(
 		localStorage.getItem('measure') === 'F' ? true : false
@@ -38,7 +39,7 @@ const CurrentWeather = ({
 
 	return (
 		<CurrentWeatherWrapper>
-			<Searchbar onSearch={onSearch} />
+			<Searchbar onSearch={onSearch} getUserCity={getUserCity} />
 			{Object.keys(current).length > 0 && (
 				<CurrentWeatherContent>
 					{!isLoading ? (
@@ -90,7 +91,7 @@ const CurrentWeather = ({
 					) : (
 						<ThreeDots
 							wrapperStyle={{ display: 'flex', justifyContent: 'center' }}
-								color="#fff"
+							color="#fff"
 						/>
 					)}
 				</CurrentWeatherContent>

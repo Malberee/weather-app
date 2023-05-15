@@ -15,13 +15,23 @@ const App = () => {
 	const [forecast, setForecast] = useState({})
 	const [isLoading, setIsLoading] = useState(false)
 
-	const onSearch = async (newQuery) => {
-		setQuery(newQuery)
-	}
+	// const onSearch = async (newQuery) => {
+	// 	setQuery(newQuery)
+	// }
 
 	const getLocalTime = (time) => {
 		moment.locale('uk')
 		return moment(time).format('HH:mm')
+	}
+
+	const getUserCity = async () => {
+		setIsLoading(true)
+		const city = await getUserLocation()
+		if (city !== location.name) {
+			setQuery(city)
+		}
+		setIsLoading(false)
+		return
 	}
 
 	useEffect(() => {
@@ -57,8 +67,9 @@ const App = () => {
 					location={location}
 					forecast={forecast}
 					getLocalTime={getLocalTime}
-					onSearch={onSearch}
+					onSearch={setQuery}
 					isLoading={isLoading}
+					getUserCity={getUserCity}
 				/>
 				{/* <ForecastWeather forecast={forecast} getLocalTime={getLocalTime} /> */}
 			</>
