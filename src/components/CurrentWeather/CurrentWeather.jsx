@@ -90,7 +90,7 @@ const CurrentWeather = ({
 					) : (
 						<ThreeDots
 							wrapperStyle={{ display: 'flex', justifyContent: 'center' }}
-							color="#fff"
+								color="#fff"
 						/>
 					)}
 				</CurrentWeatherContent>

@@ -5,17 +5,17 @@ const API_KEY = 'ce5873f95fb84efab81122156230805'
 let controller
 
 export const getCities = async (query) => {
-	if (query.trim() !== '') {
-		if (typeof controller !== typeof undefined) {
-			// controller.abort('CANCEL')
-		}
+	// if (query.trim() !== '') {
+	// 	if (typeof controller !== typeof undefined) {
+	// 		controller.abort('CANCEL')
+	// 	}
 
-		controller = new AbortController()
+		// controller = new AbortController()
 
 		const cities = await axios
 			.get(
-				`https://api.weatherapi.com/v1/search.json?key=${API_KEY}&q=${query}`,
-				{ signal: controller.signal }
+				`https://api.weatherapi.com/v1/search.json?key=${API_KEY}&q=${query}`
+				// { signal: controller.signal }
 			)
 			.then((res) => res.data)
 
@@ -25,5 +25,5 @@ export const getCities = async (query) => {
 		console.log(result)
 
 		return result
-	}
+	// }
 }

@@ -28,10 +28,10 @@ const App = () => {
 		// async function fetchData() {
 		// 	const userCity = await getUserLocation()
 		// 	setQuery(userCity)
-		// setIsLoading((prevState) => !prevState)
+		// setIsLoading(false)
 		// }
-		// setIsLoading(prevState => !prevState)
 		// fetchData()
+		// setIsLoading(true)
 	}, [])
 
 	useEffect(() => {
@@ -41,11 +41,11 @@ const App = () => {
 			setWeather(response.current)
 			setLocation(response.location)
 			setForecast(response.forecast.forecastday[0])
-			setIsLoading((prevState) => !prevState)
+			setIsLoading(false)
 		}
 		if (query.trim() !== '') {
 			fetchData()
-			setIsLoading((prevState) => !prevState)
+			setIsLoading(true)
 		}
 	}, [query])
 

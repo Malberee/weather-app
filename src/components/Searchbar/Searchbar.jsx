@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 import { getUserLocation } from '../../services/getUserLocation'
@@ -9,18 +9,24 @@ import {
 	SubmitButton,
 	TargetButton,
 	SearchField,
-	AutocompleteItem
+	AutocompleteItem,
 } from './Searchbar.styled'
 
 const Searchbar = ({ onSearch }) => {
 	const [query, setQuery] = useState('')
 	const [citiesAutocomplete, setCitiesAutocomplete] = useState([])
 
-	const onInputChange = async (string) => {
-		setQuery(string)
-		const cities = await getCities(string)
-		setCitiesAutocomplete(cities)
-	}
+	useEffect(() => {
+		async function fetchData() {
+			const cities = await getCities(query)
+			setCitiesAutocomplete(cities)
+		}
+		query.trim() && fetchData()
+	}, [query])
+
+	useEffect(() => {
+		console.log(citiesAutocomplete)
+	}, [citiesAutocomplete])
 
 	return (
 		<SearchbarWrapper
@@ -31,28 +37,23 @@ const Searchbar = ({ onSearch }) => {
 		>
 			<SearchField
 				items={citiesAutocomplete}
+				
 				placeholder="City"
 				resultStringKeyName="title"
+				fuseOptions={{ keys: ['title'] }}
 				inputDebounce={0}
-				onSearch={onInputChange}
+				onSearch={(newQuery) => setQuery(newQuery)}
 				onSelect={(item) => {
 					console.log(item.title)
 					setQuery(item.title)
 					onSearch(item.title)
 				}}
-				formatResult={item => (<AutocompleteItem>{item.title}</AutocompleteItem>)}
 				showIcon={false}
 				showClear={false}
 				styling={{
 					width: '100%',
 					height: '30px',
-					// background:
-					// 	'linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.5) 100%)',
-					// webkitBackgroundClip: 'text',
-					// webkitTextFillColor: 'transparent',
-
 					hoverBackgroundColor: '#ffffff10',
-
 					borderRadius: '14px',
 					border: '0.5px solid #545454',
 					backgroundColor: 'rgba(40, 40, 40, 0.6)',
