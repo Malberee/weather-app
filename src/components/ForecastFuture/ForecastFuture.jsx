@@ -21,7 +21,7 @@ const ForecastFuture = ({ forecast, measure }) => {
 
 	return (
 		<ForecastFutureList>
-			{forecast.map(({ date, date_epoch, day }) => (
+			{forecast.slice(1).map(({ date, date_epoch, day }) => (
 				<ForecastFutureItem key={date_epoch}>
 					<WeatherIconWrapper>
 						<div>{getWeatherIcon(day.condition.text, true, 150)}</div>

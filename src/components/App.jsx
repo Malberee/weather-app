@@ -61,7 +61,7 @@ const App = () => {
 			console.log(response)
 			setCurrent(response.current)
 			setLocation(response.location)
-			setForecast(response.forecast.forecastday.slice(1)) // Slice убрать когда закончится пробный период на платный тарифный план
+			setForecast(response.forecast.forecastday)
 			setIsLoading(false)
 		}
 		if (query.trim() !== '') {
