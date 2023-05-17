@@ -6,18 +6,25 @@ import moment from 'moment'
 import ukLocale from 'moment/locale/uk'
 import './App.scss'
 import CurrentWeather from './CurrentWeather'
-// import ForecastWeather from './ForecastWeather'
+import ForecastWeather from './ForecastWeather'
 
 const App = () => {
 	const [query, setQuery] = useState('')
-	const [location, setLocation] = useState({})
-	const [weather, setWeather] = useState({})
-	const [forecast, setForecast] = useState({})
+	const [location, setLocation] = useState()
+	const [current, setCurrent] = useState()
+	const [forecast, setForecast] = useState([])
+	const [measure, setMeasure] = useState(
+		localStorage.getItem('measure') === null
+			? 'C'
+			: localStorage.getItem('measure') === 'C'
+			? 'C'
+			: 'F'
+	)
 	const [isLoading, setIsLoading] = useState(false)
 
-	// const onSearch = async (newQuery) => {
-	// 	setQuery(newQuery)
-	// }
+	const toggleMeasure = () => {
+		setMeasure((prevState) => (prevState === 'C' ? 'F' : 'C'))
+	}
 
 	const getLocalTime = (time) => {
 		moment.locale('uk')
@@ -35,6 +42,10 @@ const App = () => {
 	}
 
 	useEffect(() => {
+		localStorage.setItem('measure', measure)
+	}, [measure])
+
+	useEffect(() => {
 		// async function fetchData() {
 		// 	const userCity = await getUserLocation()
 		// 	setQuery(userCity)
@@ -48,9 +59,9 @@ const App = () => {
 		async function fetchData() {
 			const response = await getWeather(query)
 			console.log(response)
-			setWeather(response.current)
+			setCurrent(response.current)
 			setLocation(response.location)
-			setForecast(response.forecast.forecastday[0])
+			setForecast(response.forecast.forecastday.slice(1)) // Slice убрать когда закончится пробный период на платный тарифный план
 			setIsLoading(false)
 		}
 		if (query.trim() !== '') {
@@ -61,18 +72,22 @@ const App = () => {
 
 	return (
 		<>
-			<>
-				<CurrentWeather
-					current={weather}
-					location={location}
-					forecast={forecast}
-					getLocalTime={getLocalTime}
-					onSearch={setQuery}
-					isLoading={isLoading}
-					getUserCity={getUserCity}
-				/>
-				{/* <ForecastWeather forecast={forecast} getLocalTime={getLocalTime} /> */}
-			</>
+			<CurrentWeather
+				current={current}
+				location={location}
+				forecast={forecast[0]}
+				getLocalTime={getLocalTime}
+				onSearch={setQuery}
+				isLoading={isLoading}
+				getUserCity={getUserCity}
+				measure={measure}
+				toggleMeasure={toggleMeasure}
+			/>
+			<ForecastWeather
+				forecast={forecast}
+				getLocalTime={getLocalTime}
+				measure={measure}
+			/>
 		</>
 	)
 }

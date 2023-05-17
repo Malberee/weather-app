@@ -3,18 +3,18 @@ import PropTypes from 'prop-types'
 import moment from 'moment'
 import { ThreeDots } from 'react-loader-spinner'
 import { getWeatherIcon } from '../../services/getWeatherIcon'
+import IconWrapper from '../IconWrapper'
 import {
 	CurrentWeatherWrapper,
 	CurrentWeatherContent,
 	LocationWrapper,
-	Text,
 	SolarCycle,
 	WeatherWrapper,
 	Temp,
+	Text,
 	Weather,
 	ToggleTempMeasure,
 	ToggleTempMeasureContainer,
-	IconWrapper,
 	CurrentWeatherIconWrapper,
 } from './CurrentWeather.styled'
 import Searchbar from '../Searchbar'
@@ -28,10 +28,12 @@ const CurrentWeather = ({
 	onSearch,
 	isLoading,
 	getUserCity,
+	measure,
+	toggleMeasure,
 }) => {
-	const [checked, setChecked] = useState(
-		localStorage.getItem('measure') === 'F' ? true : false
-	)
+	// const [checked, setChecked] = useState(
+	// 	localStorage.getItem('measure') === 'F' ? true : false
+	// )
 
 	const convertTime12to24 = (time12h) => {
 		return moment(time12h, ['h:mm A']).format('HH:mm')
@@ -40,7 +42,7 @@ const CurrentWeather = ({
 	return (
 		<CurrentWeatherWrapper>
 			<Searchbar onSearch={onSearch} getUserCity={getUserCity} />
-			{Object.keys(current).length > 0 && (
+			{current && (
 				<CurrentWeatherContent>
 					{!isLoading ? (
 						<>
@@ -57,7 +59,6 @@ const CurrentWeather = ({
 								<div>
 									{getWeatherIcon(current.condition.text, current.is_day)}
 								</div>
-								{/* <img src={current.condition.icon} alt="" /> */}
 							</CurrentWeatherIconWrapper>
 							<SolarCycle>
 								<Text>
@@ -75,9 +76,9 @@ const CurrentWeather = ({
 							</SolarCycle>
 							<WeatherWrapper>
 								<Temp>
-									{checked === false
-										? `${current.temp_c}°C`
-										: `${current.temp_f}°F`}
+									{measure === 'C'
+										? `${Math.trunc(current.temp_c)}°C`
+										: `${Math.trunc(current.temp_f)}°F`}
 								</Temp>
 								<Weather>{current.condition.text}</Weather>
 								<Text>
@@ -100,13 +101,10 @@ const CurrentWeather = ({
 			<ToggleTempMeasureContainer>
 				<input
 					type="checkbox"
-					checked={checked}
-					onChange={() => {
-						localStorage.setItem('measure', checked === true ? 'C' : 'F')
-						setChecked(!checked)
-					}}
+					checked={measure === 'C' ? false : true}
+					onChange={toggleMeasure}
 				/>
-				<ToggleTempMeasure>{checked === false ? 'C' : 'F'}</ToggleTempMeasure>
+				<ToggleTempMeasure>{measure}</ToggleTempMeasure>
 				<p>C</p>
 				<p>F</p>
 			</ToggleTempMeasureContainer>
@@ -115,8 +113,8 @@ const CurrentWeather = ({
 }
 
 CurrentWeather.propTypes = {
-	current: PropTypes.object.isRequired,
-	location: PropTypes.object.isRequired,
+	// current: PropTypes.object.isRequired,
+	// location: PropTypes.object.isRequired,
 }
 
 CurrentWeather.defaultProps = {}

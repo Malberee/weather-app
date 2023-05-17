@@ -168,8 +168,3 @@ export const ToggleTempMeasure = styled.span`
 	transform: translateY(-50%);
 	transition: transform 150ms cubic-bezier(0.42, 0, 0.48, 0.98);
 `
-
-export const IconWrapper = styled.span`
-	margin-right: 5px;
-	vertical-align: middle;
-`

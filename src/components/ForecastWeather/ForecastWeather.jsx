@@ -1,20 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ForecastWeatherWrapper, HourForecastList, HourForecastItem } from './ForecastWeather.styled'
+import ForecastFuture from '../ForecastFuture'
+import { Droplet } from '../Icons'
+import {
+	ForecastWeatherWrapper,
+	HourForecastList,
+	HourForecastItem,
+} from './ForecastWeather.styled'
 
-const ForecastWeather = ({forecast, getLocalTime}) => (
-    <ForecastWeatherWrapper>
-        <HourForecastList>
-            {forecast.hour.map(({time_epoch, temp_c}) => {
-                return (
-                    <HourForecastItem key={time_epoch}>
-                        <p>{getLocalTime(time_epoch)}</p>
-                        <p>{temp_c}℃</p>
-                    </HourForecastItem>
-                )
-            })}
-        </HourForecastList>
-    </ForecastWeatherWrapper>
+const ForecastWeather = ({ forecast, getLocalTime, measure }) => (
+	<ForecastWeatherWrapper>
+		<ForecastFuture forecast={forecast} measure={measure} />
+	</ForecastWeatherWrapper>
 )
 
 ForecastWeather.propTypes = {}
