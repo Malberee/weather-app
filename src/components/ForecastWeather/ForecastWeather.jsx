@@ -11,8 +11,16 @@ import {
 
 const ForecastWeather = ({ forecast, getLocalTime, measure }) => (
 	<ForecastWeatherWrapper>
-		<ForecastFuture forecast={forecast} measure={measure} />
-		<ForecastDay forecast={forecast} getLocalTime={getLocalTime} measure={ measure} />
+		{forecast.length > 0 && (
+			<>
+				<ForecastFuture forecast={forecast} measure={measure} />
+				<ForecastDay
+					forecast={forecast}
+					getLocalTime={getLocalTime}
+					measure={measure}
+				/>{' '}
+			</>
+		)}
 	</ForecastWeatherWrapper>
 )
 

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import moment from 'moment'
 import { getWeatherIcon } from '../../services/getWeatherIcon'
 import IconWrapper from '../IconWrapper'
+import { Thunder } from '../Icons'
 import {
 	ForecastFutureList,
 	ForecastFutureItem,
