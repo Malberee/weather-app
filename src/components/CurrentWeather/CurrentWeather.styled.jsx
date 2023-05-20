@@ -95,20 +95,6 @@ export const Temp = styled.h2`
 	line-height: 61px;
 `
 
-export const Weather = styled.h3`
-	background: linear-gradient(
-		180deg,
-		#ffffff 0%,
-		rgba(255, 255, 255, 0.5) 100%
-	);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-
-	font-weight: 700;
-	font-size: 30px;
-	line-height: 37px;
-`
-
 export const ToggleTempMeasureContainer = styled.label`
 	position: relative;
 

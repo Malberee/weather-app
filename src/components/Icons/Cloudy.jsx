@@ -1,7 +1,7 @@
 export const Cloudy = ({ width = 350 }) => (
 	<svg
 		width={width}
-		height="296"
+		// height="296"
 		viewBox="0 0 444 296"
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"

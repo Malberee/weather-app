@@ -1,41 +1,83 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import IconWrapper from '../IconWrapper'
+// import IconWrapper from '../IconWrapper'
+import Title from '../Title'
 import {
 	ForecastDayWrapper,
+	ForecastDayContent,
 	ForecastDayList,
 	ForecastDayItem,
+	Pagination,
+	PaginationItem,
+	Temp,
+	Text,
+	Time,
+	IconWrapper
 } from './ForecastDay.styled'
 import { getWeatherIcon } from '../../services/getWeatherIcon'
 
 const ForecastDay = ({ forecast, getLocalTime, measure }) => {
-	const formattedForecast = forecast[0].hour.filter((hour) => {
-		const time = new Date(hour.time_epoch).getTime()
-		const currentTime = new Date(Date.now()).getTime()
-		console.log('T' + time)
-		console.log('C' + currentTime)
-		if (time > currentTime) {
-			return hour
-		}
-	})
+	// const formattedForecast = forecast[0].hour.filter((hour) => {
+	// 	const time = new Date(hour.time).getHours()
+	// 	const currentTime = new Date(Date.now()).getHours()
+	// 	// if (time > currentTime) {
+	// 		return hour
+	// 	// }
+	// })
+
+	const getInitialFirstItem = () => {
+		return forecast[0].hour.findIndex(
+			(hour) => new Date(hour.time).getHours() > new Date(Date.now()).getHours()
+		)
+	}
 
 	return (
 		<ForecastDayWrapper>
-			<h2>Today</h2>
-			<ForecastDayList>
-				{formattedForecast.map(
-					({ time, is_day, temp_c, temp_f, condition }) => (
-						<ForecastDayItem key={time}>
-							<p>{getLocalTime(time)}</p>
-							<IconWrapper>
-								{getWeatherIcon(condition.text, is_day, 50)}
-							</IconWrapper>
-							<h3>{measure === 'C' ? `${temp_c}°C` : `${temp_f}°F`}</h3>
-							<p>{condition.text}</p>
-						</ForecastDayItem>
-					)
-				)}
-			</ForecastDayList>
+			<ForecastDayContent>
+				<Title size="30">Today</Title>
+				<ForecastDayList
+					itemsToShow={5}
+					itemPadding={[0, 8]}
+					initialFirstItem={getInitialFirstItem()}
+					showArrows={false}
+					renderPagination={({ pages, activePage, onClick }) => {
+						return (
+							<Pagination>
+								{pages.map((page) => {
+									const isActivePage = activePage === page
+									return (
+										<PaginationItem
+											maxWidth="20%"
+											key={page}
+											onClick={() => onClick(page)}
+											active={isActivePage}
+										/>
+									)
+								})}
+							</Pagination>
+						)
+					}}
+				>
+					{forecast[0].hour.map(
+						({ time, is_day, temp_c, temp_f, condition }) => (
+							<ForecastDayItem key={time}>
+								<Time>{getLocalTime(time)}</Time>
+								<IconWrapper _width="54">
+									{getWeatherIcon(condition.text, is_day, 90)}
+								</IconWrapper>
+								<div>
+									<Temp>
+										{measure === 'C'
+											? `${Math.trunc(temp_c)}°C`
+											: `${Math.trunc(temp_f)}°F`}
+									</Temp>
+									<Text>{condition.text}</Text>
+								</div>
+							</ForecastDayItem>
+						)
+					)}
+				</ForecastDayList>
+			</ForecastDayContent>
 		</ForecastDayWrapper>
 	)
 }

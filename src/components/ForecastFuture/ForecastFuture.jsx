@@ -1,18 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
+import { Droplet } from '../Icons'
 import { getWeatherIcon } from '../../services/getWeatherIcon'
+import Title from '../Title'
 import IconWrapper from '../IconWrapper'
-import { Thunder } from '../Icons'
 import {
 	ForecastFutureList,
 	ForecastFutureItem,
 	WeatherIconWrapper,
-	DayOfWeek,
 	Weather,
 	Text,
 } from './ForecastFuture.styled'
-import { Droplet } from '../Icons'
 
 const ForecastFuture = ({ forecast, measure }) => {
 	const getDayOfWeek = (date) => {
@@ -28,7 +27,7 @@ const ForecastFuture = ({ forecast, measure }) => {
 						<div>{getWeatherIcon(day.condition.text, true, 150)}</div>
 					</WeatherIconWrapper>
 					<div>
-						<DayOfWeek>{getDayOfWeek(date)}</DayOfWeek>
+						<Title size="30">{getDayOfWeek(date)}</Title>
 						<Text>{day.condition.text}</Text>
 					</div>
 					<Weather>

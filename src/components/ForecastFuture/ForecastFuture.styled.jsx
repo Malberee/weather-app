@@ -27,16 +27,6 @@ export const WeatherIconWrapper = styled.div`
 	align-items: center;
 `
 
-export const DayOfWeek = styled.h2`
-	background: linear-gradient(
-		180deg,
-		#ffffff 0%,
-		rgba(255, 255, 255, 0.5) 100%
-	);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-`
-
 export const Weather = styled.div`
 	text-align: center;
 	margin-left: auto;

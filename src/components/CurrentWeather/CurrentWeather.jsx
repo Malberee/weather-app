@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import moment from 'moment'
 import { ThreeDots } from 'react-loader-spinner'
 import { getWeatherIcon } from '../../services/getWeatherIcon'
+import Title from '../Title'
 import IconWrapper from '../IconWrapper'
 import {
 	CurrentWeatherWrapper,
@@ -12,7 +13,6 @@ import {
 	WeatherWrapper,
 	Temp,
 	Text,
-	Weather,
 	ToggleTempMeasure,
 	ToggleTempMeasureContainer,
 	CurrentWeatherIconWrapper,
@@ -80,7 +80,7 @@ const CurrentWeather = ({
 										? `${Math.trunc(current.temp_c)}°C`
 										: `${Math.trunc(current.temp_f)}°F`}
 								</Temp>
-								<Weather>{current.condition.text}</Weather>
+								<Title size="30">{current.condition.text}</Title>
 								<Text>
 									<IconWrapper>
 										<Droplet width="27" />
