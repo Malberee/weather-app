@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import Carousel from 'react-elastic-carousel'
 
 export const ForecastDayWrapper = styled.div`
-	padding-top: 35px;
+	/* padding-top: 35px; */
 	overflow: hidden;
 `
 
@@ -13,10 +13,9 @@ export const ForecastDayContent = styled.div`
 
 export const ForecastDayList = styled(Carousel)`
 	margin-top: 35px;
-	.rec-carousel {
-		.rec-slider-container {
-			margin: 0 auto;
-		}
+
+	.rec-slider-container {
+		margin: 0 auto;
 	}
 `
 

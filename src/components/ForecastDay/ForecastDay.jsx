@@ -12,19 +12,11 @@ import {
 	Temp,
 	Text,
 	Time,
-	IconWrapper
+	IconWrapper,
 } from './ForecastDay.styled'
 import { getWeatherIcon } from '../../services/getWeatherIcon'
 
 const ForecastDay = ({ forecast, getLocalTime, measure }) => {
-	// const formattedForecast = forecast[0].hour.filter((hour) => {
-	// 	const time = new Date(hour.time).getHours()
-	// 	const currentTime = new Date(Date.now()).getHours()
-	// 	// if (time > currentTime) {
-	// 		return hour
-	// 	// }
-	// })
-
 	const getInitialFirstItem = () => {
 		return forecast[0].hour.findIndex(
 			(hour) => new Date(hour.time).getHours() > new Date(Date.now()).getHours()
@@ -62,7 +54,7 @@ const ForecastDay = ({ forecast, getLocalTime, measure }) => {
 						({ time, is_day, temp_c, temp_f, condition }) => (
 							<ForecastDayItem key={time}>
 								<Time>{getLocalTime(time)}</Time>
-								<IconWrapper _width="54">
+								<IconWrapper _width="54" minHeight="54">
 									{getWeatherIcon(condition.text, is_day, 90)}
 								</IconWrapper>
 								<div>
@@ -83,7 +75,5 @@ const ForecastDay = ({ forecast, getLocalTime, measure }) => {
 }
 
 ForecastDay.propTypes = {}
-
-ForecastDay.defaultProps = {}
 
 export default ForecastDay

@@ -6,6 +6,10 @@ export const ForecastWeatherWrapper = styled.div`
 	border-radius: 0px 30px 30px 0px;
 	background-color: #282828;
 	padding: 16px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 `
 
 export const HourForecastList = styled.ul`
