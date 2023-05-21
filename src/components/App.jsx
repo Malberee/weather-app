@@ -34,7 +34,7 @@ const App = () => {
 	const getUserCity = async () => {
 		setIsLoading(true)
 		const city = await getUserLocation()
-		if (city !== location.name) {
+		if (!location || city !== location.name) {
 			setQuery(city)
 		}
 		setIsLoading(false)
