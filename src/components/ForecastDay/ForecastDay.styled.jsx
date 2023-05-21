@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import Carousel from 'react-elastic-carousel'
+import Carousel from 'react-carousel-elasticss'
 
 export const ForecastDayWrapper = styled.div`
 	/* padding-top: 35px; */
