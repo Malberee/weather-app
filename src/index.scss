@@ -6,7 +6,7 @@ body {
 	// place-items: center;
 	// min-width: 320px;
 	// min-height: 100vh;
-    background-color: #0c0d1b;
+	background-color: #0c0d1b;
 }
 
 p,
@@ -15,32 +15,41 @@ h2,
 h3,
 h4,
 h5 {
-    margin: 0;
+	margin: 0;
+	background: linear-gradient(
+		180deg,
+		#ffffff 0%,
+		rgba(255, 255, 255, 0.5) 100%
+	);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	text-fill-color: transparent;
 }
 
 ul,
 ol {
-    margin: 0;
-    padding-left: 0;
+	margin: 0;
+	padding-left: 0;
 }
 
 button {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 img {
-    display: block;
-    max-width: 100%;
-    height: auto;
+	display: block;
+	max-width: 100%;
+	height: auto;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	box-sizing: border-box;
 }
 
 .list {
-    list-style: none;
+	list-style: none;
 }

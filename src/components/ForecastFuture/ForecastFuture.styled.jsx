@@ -22,6 +22,7 @@ export const ForecastFutureItem = styled.li`
 
 export const WeatherIconWrapper = styled.div`
 	max-height: 110px;
+	
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -34,18 +35,10 @@ export const Weather = styled.div`
 `
 
 export const Text = styled.p`
-	background: linear-gradient(
-		180deg,
-		#ffffff 0%,
-		rgba(255, 255, 255, 0.5) 100%
-	);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-
 	margin-top: 12px;
 	text-align: left;
 
-	font-weight: 700;
+	font-weight: 600;
 	font-size: 16px;
 	line-height: 20px;
 `

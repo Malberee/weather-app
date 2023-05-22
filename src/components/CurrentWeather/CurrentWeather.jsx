@@ -7,7 +7,6 @@ import Title from '../Title'
 import IconWrapper from '../IconWrapper'
 import {
 	CurrentWeatherWrapper,
-	CurrentWeatherContent,
 	LocationWrapper,
 	SolarCycle,
 	WeatherWrapper,
@@ -43,7 +42,7 @@ const CurrentWeather = ({
 		<CurrentWeatherWrapper>
 			<Searchbar onSearch={onSearch} getUserCity={getUserCity} />
 			{current && (
-				<CurrentWeatherContent>
+				<div>
 					{!isLoading ? (
 						<>
 							<LocationWrapper>
@@ -95,7 +94,7 @@ const CurrentWeather = ({
 							color="#fff"
 						/>
 					)}
-				</CurrentWeatherContent>
+				</div>
 			)}
 
 			<ToggleTempMeasureContainer>

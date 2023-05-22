@@ -20,7 +20,6 @@ export const HourForecastList = styled.ul`
 `
 
 export const HourForecastItem = styled.li`
-	background-color: #e2e2e2;
-
 	padding: 5px;
+	background-color: #e2e2e2;
 `

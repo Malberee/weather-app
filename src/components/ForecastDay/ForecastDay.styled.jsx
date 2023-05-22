@@ -59,48 +59,18 @@ export const Text = styled.p`
 	font-weight: 600;
 	font-size: 12px;
 	line-height: 15px;
-
-	background: linear-gradient(
-		180deg,
-		#ffffff 0%,
-		rgba(255, 255, 255, 0.5) 100%
-	);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
-	text-fill-color: transparent;
 `
 
 export const Temp = styled.h2`
 	font-weight: 700;
 	font-size: 18px;
 	line-height: 22px;
-
-	background: linear-gradient(
-		180deg,
-		#ffffff 0%,
-		rgba(255, 255, 255, 0.5) 100%
-	);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
-	text-fill-color: transparent;
 `
 
 export const Time = styled.p`
 	font-weight: 500;
 	font-size: 16px;
 	line-height: 20px;
-
-	background: linear-gradient(
-		180deg,
-		#ffffff 0%,
-		rgba(255, 255, 255, 0.5) 100%
-	);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
-	text-fill-color: transparent;
 `
 
 export const IconWrapper = styled.div`

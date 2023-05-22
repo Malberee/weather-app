@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { Sunrise } from '../Icons'
 
 export const CurrentWeatherWrapper = styled.div`
 	width: 436px;
@@ -18,34 +17,14 @@ export const CurrentWeatherWrapper = styled.div`
 	justify-content: space-between;
 `
 
-export const CurrentWeatherContent = styled.div``
-
 export const LocationWrapper = styled.div`
 	text-align: center;
 	font-weight: 600;
 	font-size: 20px;
 	line-height: 24px;
-
-	p {
-		background: linear-gradient(
-			180deg,
-			#ffffff 0%,
-			rgba(255, 255, 255, 0.5) 100%
-		);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-	}
 `
 
 export const Text = styled.p`
-	background: linear-gradient(
-		180deg,
-		#ffffff 0%,
-		rgba(255, 255, 255, 0.5) 100%
-	);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-
 	margin-top: 12px;
 
 	font-weight: 500;
@@ -82,13 +61,6 @@ export const WeatherWrapper = styled.div`
 
 export const Temp = styled.h2`
 	display: inline-block;
-	background: linear-gradient(
-		180deg,
-		#ffffff 0%,
-		rgba(255, 255, 255, 0.5) 100%
-	);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
 
 	font-weight: 700;
 	font-size: 50px;
@@ -115,16 +87,6 @@ export const ToggleTempMeasureContainer = styled.label`
 
 	color: white;
 	background-color: #282828;
-
-	& p {
-		background: linear-gradient(
-			180deg,
-			#ffffff 0%,
-			rgba(255, 255, 255, 0.5) 100%
-		);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-	}
 
 	& input {
 		position: absolute;
