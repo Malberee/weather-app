@@ -18,9 +18,11 @@ import { getWeatherIcon } from '../../services/getWeatherIcon'
 
 const ForecastDay = ({ forecast, getLocalTime, measure }) => {
 	const getInitialFirstItem = () => {
-		return forecast[0].hour.findIndex(
+		const index = forecast[0].hour.findIndex(
 			(hour) => new Date(hour.time).getHours() > new Date(Date.now()).getHours()
 		)
+		if (index < 1) return 0
+		return index
 	}
 
 	return (
@@ -60,8 +62,8 @@ const ForecastDay = ({ forecast, getLocalTime, measure }) => {
 								<div>
 									<Temp>
 										{measure === 'C'
-											? `${Math.trunc(temp_c)}°C`
-											: `${Math.trunc(temp_f)}°F`}
+											? `${Math.round(temp_c)}°C`
+											: `${Math.round(temp_f)}°F`}
 									</Temp>
 									<Text>{condition.text}</Text>
 								</div>

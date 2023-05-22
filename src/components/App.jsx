@@ -5,14 +5,12 @@ import { getUserLocation } from '../services/getUserLocation'
 import moment from 'moment'
 import ukLocale from 'moment/locale/uk'
 import './App.scss'
-import CurrentWeather from './CurrentWeather'
+import Sidebar from './Sidebar'
 import ForecastWeather from './ForecastWeather'
 
 const App = () => {
 	const [query, setQuery] = useState('')
-	const [location, setLocation] = useState()
-	const [current, setCurrent] = useState()
-	const [forecast, setForecast] = useState([])
+	const [weather, setWeather] = useState()
 	const [measure, setMeasure] = useState(
 		localStorage.getItem('measure') === null
 			? 'C'
@@ -22,10 +20,6 @@ const App = () => {
 	)
 	const [isLoading, setIsLoading] = useState(false)
 
-	const toggleMeasure = () => {
-		setMeasure((prevState) => (prevState === 'C' ? 'F' : 'C'))
-	}
-
 	const getLocalTime = (time) => {
 		moment.locale('uk')
 		return moment(time).format('HH:mm')
@@ -34,7 +28,7 @@ const App = () => {
 	const getUserCity = async () => {
 		setIsLoading(true)
 		const city = await getUserLocation()
-		if (!location || city !== location.name) {
+		if (!weather || city !== weather.location.name) {
 			setQuery(city)
 		}
 		setIsLoading(false)
@@ -59,9 +53,7 @@ const App = () => {
 		async function fetchData() {
 			const response = await getWeather(query)
 			console.log(response)
-			setCurrent(response.current)
-			setLocation(response.location)
-			setForecast(response.forecast.forecastday)
+			setWeather({current: response.current, forecast: response.forecast.forecastday, location: response.location})
 			setIsLoading(false)
 		}
 		if (query.trim() !== '') {
@@ -72,21 +64,20 @@ const App = () => {
 
 	return (
 		<>
-			<CurrentWeather
-				current={current}
-				location={location}
-				forecast={forecast[0]}
+			<Sidebar
+				weather={weather}
 				getLocalTime={getLocalTime}
 				onSearch={setQuery}
 				isLoading={isLoading}
 				getUserCity={getUserCity}
 				measure={measure}
-				toggleMeasure={toggleMeasure}
+				toggleMeasure={setMeasure}
 			/>
 			<ForecastWeather
-				forecast={forecast}
+				weather={weather}
 				getLocalTime={getLocalTime}
 				measure={measure}
+				isLoading={isLoading}
 			/>
 		</>
 	)

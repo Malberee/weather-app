@@ -21,7 +21,7 @@ const ForecastFuture = ({ forecast, measure }) => {
 
 	return (
 		<ForecastFutureList>
-			{forecast.slice(1).map(({ date, date_epoch, day }) => (
+			{forecast.map(({ date, date_epoch, day }) => (
 				<ForecastFutureItem key={date_epoch}>
 					<WeatherIconWrapper>
 						<div>{getWeatherIcon(day.condition.text, true, 150)}</div>
@@ -34,8 +34,8 @@ const ForecastFuture = ({ forecast, measure }) => {
 						<Text>
 							Max
 							{measure === 'C'
-								? ` ${Math.trunc(day.maxtemp_c)}°C`
-								: ` ${Math.trunc(day.maxtemp_f)}°F`}
+								? ` ${Math.round(day.maxtemp_c)}°C`
+								: ` ${Math.round(day.maxtemp_f)}°F`}
 						</Text>
 						<Text>
 							Min

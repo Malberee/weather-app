@@ -24,6 +24,12 @@ export const LocationWrapper = styled.div`
 	line-height: 24px;
 `
 
+export const LocationText = styled.p`
+	font-weight: 600;
+	font-size: 24px;
+	line-height: 29px;
+`
+
 export const Text = styled.p`
 	margin-top: 12px;
 
@@ -42,6 +48,7 @@ export const CurrentWeatherIconWrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 `
+
 
 export const SolarCycle = styled.div`
 	display: flex;
@@ -65,54 +72,4 @@ export const Temp = styled.h2`
 	font-weight: 700;
 	font-size: 50px;
 	line-height: 61px;
-`
-
-export const ToggleTempMeasureContainer = styled.label`
-	position: relative;
-
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-
-	width: 56px;
-	height: 32px;
-	border-radius: 28px;
-	padding: 4px;
-
-	font-weight: 700;
-	font-size: 14px;
-	line-height: 17px;
-
-	cursor: pointer;
-
-	color: white;
-	background-color: #282828;
-
-	& input {
-		position: absolute;
-		visibility: hidden;
-	}
-
-	& input:checked + span {
-		transform: translate(100%, -50%);
-	}
-`
-
-export const ToggleTempMeasure = styled.span`
-	position: absolute;
-	top: 50%;
-	left: 4px;
-
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-	width: 24px;
-	height: 24px;
-	border-radius: 50%;
-	background: linear-gradient(180deg, #ffffff 0%, #929292);
-	color: #282828;
-
-	transform: translateY(-50%);
-	transition: transform 150ms cubic-bezier(0.42, 0, 0.48, 0.98);
 `
