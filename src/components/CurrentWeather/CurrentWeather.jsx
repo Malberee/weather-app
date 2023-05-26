@@ -52,10 +52,10 @@ const CurrentWeather = ({
 			</SolarCycle>
 			<WeatherWrapper>
 				<Temp>
-					{/* {measure === 'C'
-						? `${Math.round(current.temp_c)}°C`
-						: `${Math.round(current.temp_f)}°F`} */}
-					{Math.round(current.temp)}°C
+					{measure === 'C'
+						? ` ${Math.round(current.temp)}°C`
+						: ` ${Math.round((current.temp * 9) / 5 + 32)}°F`}
+				
 				</Temp>
 				<Title size="30">{current.weather[0].main}</Title>
 				<Text>

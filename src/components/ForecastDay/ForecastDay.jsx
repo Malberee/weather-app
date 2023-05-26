@@ -55,11 +55,11 @@ const ForecastDay = ({ weather: { hourly }, formatToLocalTime, measure, timezone
 						)
 					}}
 				>
-					{hourly.slice(1, 25).map(({ dt, temp, weather: { main } }) => (
+					{hourly.slice(1, 25).map(({ dt, temp, weather }) => (
 						<ForecastDayItem key={dt}>
 							<Time>{formatToLocalTime(dt, timezone)}</Time>
 							<IconWrapper _width="54" minHeight="54">
-								{getWeatherIcon(main, true, 90)}
+								{getWeatherIcon(weather[0].main, true, 90)}
 							</IconWrapper>
 							<div>
 								<Temp>
@@ -67,7 +67,7 @@ const ForecastDay = ({ weather: { hourly }, formatToLocalTime, measure, timezone
 										? ` ${Math.round(temp)}°C`
 										: ` ${Math.round((temp * 9) / 5 + 32)}°F`}
 								</Temp>
-								<Text>{main}</Text>
+								<Text>{weather[0].main}</Text>
 							</div>
 						</ForecastDayItem>
 					))}
