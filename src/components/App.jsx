@@ -1,12 +1,9 @@
 import { useState, useEffect } from 'react'
-import DatalistInput from 'react-datalist-input'
-import { getWeather } from '../services/getWeather'
-import { getUserLocation } from '../services/getUserLocation'
-import moment from 'moment'
-import ukLocale from 'moment/locale/uk'
+import { getLocation, getUserLocation } from '../services/api'
 import './App.scss'
 import Sidebar from './Sidebar'
 import ForecastWeather from './ForecastWeather'
+import { DateTime } from 'luxon'
 
 const App = () => {
 	const [query, setQuery] = useState('')
@@ -20,10 +17,8 @@ const App = () => {
 	)
 	const [isLoading, setIsLoading] = useState(false)
 
-	const getLocalTime = (time) => {
-		moment.locale('uk')
-		return moment(time).format('HH:mm')
-	}
+	const formatToLocalTime = (secs, timezone) =>
+		DateTime.fromSeconds(secs).setZone(timezone).toFormat('HH:mm')
 
 	const getUserCity = async () => {
 		setIsLoading(true)
@@ -51,9 +46,9 @@ const App = () => {
 
 	useEffect(() => {
 		async function fetchData() {
-			const response = await getWeather(query)
+			const response = await getLocation(query)
 			console.log(response)
-			setWeather({current: response.current, forecast: response.forecast.forecastday, location: response.location})
+			setWeather(response)
 			setIsLoading(false)
 		}
 		if (query.trim() !== '') {
@@ -66,7 +61,7 @@ const App = () => {
 		<>
 			<Sidebar
 				weather={weather}
-				getLocalTime={getLocalTime}
+				formatToLocalTime={formatToLocalTime}
 				onSearch={setQuery}
 				isLoading={isLoading}
 				getUserCity={getUserCity}
@@ -75,7 +70,7 @@ const App = () => {
 			/>
 			<ForecastWeather
 				weather={weather}
-				getLocalTime={getLocalTime}
+				formatToLocalTime={formatToLocalTime}
 				measure={measure}
 				isLoading={isLoading}
 			/>

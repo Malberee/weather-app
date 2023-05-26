@@ -16,11 +16,14 @@ import {
 } from './ForecastDay.styled'
 import { getWeatherIcon } from '../../services/getWeatherIcon'
 
-const ForecastDay = ({ forecast, getLocalTime, measure }) => {
+const ForecastDay = ({ weather: { hourly }, formatToLocalTime, measure, timezone }) => {
 	const getInitialFirstItem = () => {
-		const index = forecast[0].hour.findIndex(
-			(hour) => new Date(hour.time).getHours() > new Date(Date.now()).getHours()
-		)
+		console.log(new Date(1685131200).getHours())
+		const index = hourly
+			.slice(1, 25)
+			.findIndex(
+				(hour) => new Date(hour.dt).getHours() > new Date(Date.now()).getHours()
+			)
 		if (index < 1) return 0
 		return index
 	}
@@ -52,24 +55,22 @@ const ForecastDay = ({ forecast, getLocalTime, measure }) => {
 						)
 					}}
 				>
-					{forecast[0].hour.map(
-						({ time, is_day, temp_c, temp_f, condition }) => (
-							<ForecastDayItem key={time}>
-								<Time>{getLocalTime(time)}</Time>
-								<IconWrapper _width="54" minHeight="54">
-									{getWeatherIcon(condition.text, is_day, 90)}
-								</IconWrapper>
-								<div>
-									<Temp>
-										{measure === 'C'
-											? `${Math.round(temp_c)}°C`
-											: `${Math.round(temp_f)}°F`}
-									</Temp>
-									<Text>{condition.text}</Text>
-								</div>
-							</ForecastDayItem>
-						)
-					)}
+					{hourly.slice(1, 25).map(({ dt, temp, weather: { main } }) => (
+						<ForecastDayItem key={dt}>
+							<Time>{formatToLocalTime(dt, timezone)}</Time>
+							<IconWrapper _width="54" minHeight="54">
+								{getWeatherIcon(main, true, 90)}
+							</IconWrapper>
+							<div>
+								<Temp>
+									{measure === 'C'
+										? ` ${Math.round(temp)}°C`
+										: ` ${Math.round((temp * 9) / 5 + 32)}°F`}
+								</Temp>
+								<Text>{main}</Text>
+							</div>
+						</ForecastDayItem>
+					))}
 				</ForecastDayList>
 			</ForecastDayContent>
 		</ForecastDayWrapper>

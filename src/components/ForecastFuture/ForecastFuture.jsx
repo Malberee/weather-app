@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import moment from 'moment'
 import { Droplet } from '../Icons'
 import { getWeatherIcon } from '../../services/getWeatherIcon'
 import Title from '../Title'
@@ -12,42 +11,42 @@ import {
 	Weather,
 	Text,
 } from './ForecastFuture.styled'
+import { DateTime } from 'luxon'
 
-const ForecastFuture = ({ forecast, measure }) => {
-	const getDayOfWeek = (date) => {
-		const day = new Date(date)
-		return moment(day).format('dddd')
+const ForecastFuture = ({ weather: { daily }, measure }) => {
+	const getDayOfWeek = (time) => {
+		return DateTime.fromSeconds(time).weekdayLong
 	}
 
 	return (
 		<ForecastFutureList>
-			{forecast.map(({ date, date_epoch, day }) => (
-				<ForecastFutureItem key={date_epoch}>
+			{daily.slice(1, 4).map(({ dt, weather, temp, humidity }) => (
+				<ForecastFutureItem key={dt}>
 					<WeatherIconWrapper>
-						<div>{getWeatherIcon(day.condition.text, true, 150)}</div>
+						<div>{getWeatherIcon(weather[0].main, true, 150)}</div>
 					</WeatherIconWrapper>
 					<div>
-						<Title size="30">{getDayOfWeek(date)}</Title>
-						<Text>{day.condition.text}</Text>
+						<Title size="30">{getDayOfWeek(dt)}</Title>
+						<Text>{weather[0].main}</Text>
 					</div>
 					<Weather>
 						<Text>
 							Max
 							{measure === 'C'
-								? ` ${Math.round(day.maxtemp_c)}°C`
-								: ` ${Math.round(day.maxtemp_f)}°F`}
+								? ` ${Math.round(temp.max)}°C`
+								: ` ${Math.round((temp.max * 9) / 5 + 32)}°F`}
 						</Text>
 						<Text>
 							Min
 							{measure === 'C'
-								? ` ${Math.trunc(day.mintemp_c)}°C`
-								: ` ${Math.trunc(day.mintemp_f)}°F`}
+								? ` ${Math.round(Math.round(temp.min))}°C`
+								: ` ${Math.round((temp.min * 9) / 5 + 32)}°F`}
 						</Text>
 						<Text>
 							<IconWrapper>
 								<Droplet />
 							</IconWrapper>
-							{day.avghumidity}%
+							{humidity}%
 						</Text>
 					</Weather>
 				</ForecastFutureItem>

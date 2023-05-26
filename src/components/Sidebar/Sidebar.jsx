@@ -10,7 +10,7 @@ import Searchbar from '../Searchbar'
 
 const Sidebar = ({
 	weather,
-	getLocalTime,
+	formatToLocalTime,
 	onSearch,
 	isLoading,
 	getUserCity,
@@ -23,14 +23,14 @@ const Sidebar = ({
 
 	return (
 		<SidebarWrapper>
-            <Searchbar onSearch={onSearch} getUserCity={getUserCity} />
-            
+			<Searchbar onSearch={onSearch} getUserCity={getUserCity} />
+
 			{weather && (
 				<div>
 					{!isLoading ? (
 						<CurrentWeather
 							weather={weather}
-							getLocalTime={getLocalTime}
+							formatToLocalTime={formatToLocalTime}
 							measure={measure}
 						/>
 					) : (
@@ -46,7 +46,9 @@ const Sidebar = ({
 				<input
 					type="checkbox"
 					defaultChecked={measure === 'C' ? false : true}
-					onChange={() => toggleMeasure((prevState) => (prevState === 'C' ? 'F' : 'C'))}
+					onChange={() =>
+						toggleMeasure((prevState) => (prevState === 'C' ? 'F' : 'C'))
+					}
 				/>
 				<ToggleTempMeasure>{measure}</ToggleTempMeasure>
 				<p>C</p>

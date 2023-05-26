@@ -10,16 +10,21 @@ import {
 } from './ForecastWeather.styled'
 import { ThreeDots } from 'react-loader-spinner'
 
-const ForecastWeather = ({ weather, getLocalTime, measure, isLoading }) => (
+const ForecastWeather = ({
+	weather,
+	formatToLocalTime,
+	measure,
+	isLoading,
+}) => (
 	<ForecastWeatherWrapper>
 		{weather && (
 			<>
 				{!isLoading ? (
 					<>
-						<ForecastFuture forecast={weather.forecast} measure={measure} />
+						<ForecastFuture weather={weather} measure={measure} />
 						<ForecastDay
-							forecast={weather.forecast}
-							getLocalTime={getLocalTime}
+							weather={weather}
+							formatToLocalTime={formatToLocalTime}
 							measure={measure}
 						/>
 					</>
