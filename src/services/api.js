@@ -6,7 +6,7 @@ const API_KEY = '1e187fa330b57996189c96497a6fae94'
 export const getLocation = async (query) => {
 	return await axios
 		.get(
-			`http://api.openweathermap.org/geo/1.0/direct?q=${query}&appid=${API_KEY}`
+			`https://api.openweathermap.org/geo/1.0/direct?q=${query}&appid=${API_KEY}`
 		)
 		.then(async ({ data }) => {
 			const { lat, lon } = data[0]
