@@ -43,7 +43,6 @@ const Searchbar = ({ onSearch }) => {
 				type="button"
 				onClick={async () => {
 					const city = await getUserLocation()
-					console.log(city)
 					onSearch(city)
 				}}
 			>

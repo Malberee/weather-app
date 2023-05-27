@@ -3,7 +3,7 @@ import { getLocation } from '../services/api'
 import './App.scss'
 import Sidebar from './Sidebar'
 import ForecastWeather from './ForecastWeather'
-import { DateTime } from 'luxon'
+import moment from 'moment-timezone'
 
 const App = () => {
 	const [query, setQuery] = useState('')
@@ -18,7 +18,7 @@ const App = () => {
 	const [isLoading, setIsLoading] = useState(false)
 
 	const formatToLocalTime = (secs, timezone) =>
-		DateTime.fromSeconds(secs).setZone(timezone).toFormat('HH:mm')
+		moment.unix(secs).tz(`${timezone}`).format('HH:mm')
 
 	const getUserCity = async () => {
 		setIsLoading(true)

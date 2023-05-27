@@ -17,29 +17,17 @@ import {
 import { getWeatherIcon } from '../../services/getWeatherIcon'
 
 const ForecastDay = ({
-	weather: { hourly },
+	weather: { hourly, timezone },
 	formatToLocalTime,
 	measure,
-	timezone,
 }) => {
-	const getInitialFirstItem = () => {
-		const index = hourly
-			.slice(1, 25)
-			.findIndex(
-				(hour) => new Date(hour.dt).getHours() > new Date(Date.now()).getHours()
-			)
-		if (index < 1) return 0
-		return index
-	}
-
 	return (
 		<ForecastDayWrapper>
 			<ForecastDayContent>
-				<Title size="30">Today</Title>
+				<Title size="30">Hourly</Title>
 				<ForecastDayList
 					itemsToShow={5}
 					itemPadding={[0, 8]}
-					initialFirstItem={getInitialFirstItem()}
 					showArrows={false}
 					renderPagination={({ pages, activePage, onClick }) => {
 						return (
@@ -59,7 +47,7 @@ const ForecastDay = ({
 						)
 					}}
 				>
-					{hourly.slice(1, 25).map(({ dt, temp, weather }) => (
+					{hourly.slice(1, 26).map(({ dt, temp, weather }) => (
 						<ForecastDayItem key={dt}>
 							<Time>{formatToLocalTime(dt, timezone)}</Time>
 							<IconWrapper _width="54" minHeight="54">

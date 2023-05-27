@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import moment from 'moment-timezone'
 import { Droplet } from '../Icons'
 import { getWeatherIcon } from '../../services/getWeatherIcon'
 import Title from '../Title'
@@ -11,11 +12,11 @@ import {
 	Weather,
 	Text,
 } from './ForecastFuture.styled'
-import { DateTime } from 'luxon'
 
-const ForecastFuture = ({ weather: { daily }, measure }) => {
-	const getDayOfWeek = (time) => {
-		return DateTime.fromSeconds(time).weekdayLong
+const ForecastFuture = ({ weather: { daily, timezone }, measure }) => {
+	const getDayOfWeek = (secs, timezone) => {
+		console.log(secs)
+		return moment.unix(secs).tz(`${timezone}`).format('dddd')
 	}
 
 	return (
@@ -26,7 +27,7 @@ const ForecastFuture = ({ weather: { daily }, measure }) => {
 						<div>{getWeatherIcon(weather[0].icon, 150)}</div>
 					</WeatherIconWrapper>
 					<div>
-						<Title size="30">{getDayOfWeek(dt)}</Title>
+						<Title size="30">{getDayOfWeek(dt, timezone)}</Title>
 						<Text>{weather[0].main}</Text>
 					</div>
 					<Weather>
