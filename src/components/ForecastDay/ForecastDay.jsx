@@ -16,9 +16,13 @@ import {
 } from './ForecastDay.styled'
 import { getWeatherIcon } from '../../services/getWeatherIcon'
 
-const ForecastDay = ({ weather: { hourly }, formatToLocalTime, measure, timezone }) => {
+const ForecastDay = ({
+	weather: { hourly },
+	formatToLocalTime,
+	measure,
+	timezone,
+}) => {
 	const getInitialFirstItem = () => {
-		console.log(new Date(1685131200).getHours())
 		const index = hourly
 			.slice(1, 25)
 			.findIndex(
@@ -59,7 +63,7 @@ const ForecastDay = ({ weather: { hourly }, formatToLocalTime, measure, timezone
 						<ForecastDayItem key={dt}>
 							<Time>{formatToLocalTime(dt, timezone)}</Time>
 							<IconWrapper _width="54" minHeight="54">
-								{getWeatherIcon(weather[0].main, true, 90)}
+								{getWeatherIcon(weather[0].icon, 90)}
 							</IconWrapper>
 							<div>
 								<Temp>

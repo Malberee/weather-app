@@ -1,282 +1,60 @@
 import * as Icon from '../components/Icons'
 
-export const getWeatherIcon = (weather, isDay, width) => {
-	if (isDay) {
-		switch (weather) {
-			case 'Clear':
-				return <Icon.SunnyClear width={width} />
-				break
-			case 'Sunny':
-				return <Icon.SunnyClear width={width} />
-				break
-			case 'Partly cloudy':
-				return <Icon.SunnyCloudyless width={width} />
-				break
-			case 'Overcast':
-				return <Icon.Cloudy width={width} />
-				break
-			case 'Mist':
-				return <Icon.Fog width={width} />
-				break
-			case 'Patchy rain possible':
-				return <Icon.Rain width={width} />
-				break
-			case 'Patchy snow possible':
-				return <Icon.Snow width={width} />
-				break
-			case 'Patchy sleet possible':
-				return <Icon.SnowRain width={width} />
-				break
-			case 'Patchy freezing drizzle possible':
-				return <Icon.Snow width={width} />
-				break
-			case 'Thundery outbreaks possible':
-				return <Icon.Thunder width={width} />
-				break
-			case 'Blowing snow':
-				return <Icon.Snow width={width} />
-				break
-			case 'Blizzard':
-				return <Icon.Snow width={width} />
-				break
-			case 'Fog':
-				return <Icon.Fog width={width} />
-				break
-			case 'Freezing fog':
-				return <Icon.Fog width={width} />
-				break
-			case 'Patchy light rain':
-				return <Icon.Rain width={width} />
-				break
-			case 'Light rain':
-				return <Icon.Rain width={width} />
-				break
-			case 'Moderate rain at times':
-				return <Icon.Rain width={width} />
-				break
-			case 'Moderate rain':
-				return <Icon.Rain width={width} />
-				break
-			case 'Heavy rain at times':
-				return <Icon.Rain width={width} />
-				break
-			case 'Heavy rain':
-				return <Icon.Rain width={width} />
-				break
-			case 'Light freezing rain':
-				return <Icon.SnowRain width={width} />
-				break
-			case 'Moderate or heavy freezing rain':
-				return <Icon.SnowRain width={width} />
-				break
-			case 'Light sleet':
-				return <Icon.SnowRain width={width} />
-				break
-			case 'Moderate or heavy sleet':
-				return <Icon.SnowRain width={width} />
-				break
-			case 'Patchy light snow':
-				return <Icon.Snow width={width} />
-				break
-			case 'Light snow':
-				return <Icon.Snow width={width} />
-				break
-			case 'Patchy moderate snow':
-				return <Icon.Snow width={width} />
-				break
-			case 'Moderate snow':
-				return <Icon.Snow width={width} />
-				break
-			case 'Patchy heavy snow':
-				return <Icon.Snow width={width} />
-				break
-			case 'Heavy snow':
-				return <Icon.Snow width={width} />
-				break
-			case 'Ice pellets':
-				return <Icon.Snow width={width} />
-				break
-			case 'Light rain shower':
-				return <Icon.Rain width={width} />
-				break
-			case 'Moderate or heavy rain shower':
-				return <Icon.Rain width={width} />
-				break
-			case 'Torrential rain shower':
-				return <Icon.Rain width={width} />
-				break
-			case 'Light sleet showers':
-				return <Icon.Snow width={width} />
-				break
-			case 'Moderate or heavy sleet showers':
-				return <Icon.Snow width={width} />
-				break
-			case 'Light snow showers':
-				return <Icon.SnowRain width={width} />
-				break
-			case 'Moderate or heavy snow showers':
-				return <Icon.Snow width={width} />
-				break
-			case 'Light showers of ice pellets':
-				return <Icon.SnowRain width={width} />
-				break
-			case 'Moderate or heavy showers of ice pellets ':
-				return <Icon.SnowRain width={width} />
-				break
-			case 'Patchy light rain with thunder ':
-				return <Icon.HeavyrainStorm width={width} />
-				break
-			case 'Moderate or heavy rain with thunder ':
-				return <Icon.HeavyrainStorm width={width} />
-				break
-			case 'Patchy light snow with thunder ':
-				return <Icon.SnowStorm width={width} />
-				break
-			case 'Moderate or heavy snow with thunder':
-				return <Icon.SnowStorm width={width} />
-				break
-			default:
-				return <Icon.SunnyClear width={width} />
-				break
-		}
-	}
-	if (!isDay) {
-		switch (weather) {
-			case 'Clear':
-				return <Icon.NightClear width={width} />
-				break
-			case 'Sunny':
-				return <Icon.NightClear width={width} />
-				break
-			case 'Partly cloudy':
-				return <Icon.NightCloudyless width={width} />
-				break
-			case 'Overcast':
-				return <Icon.Cloudy width={width} />
-				break
-			case 'Mist':
-				return <Icon.Fog width={width} />
-				break
-			case 'Patchy rain possible':
-				return <Icon.NightRain width={width} />
-				break
-			case 'Patchy snow possible':
-				return <Icon.NightSnow width={width} />
-				break
-			case 'Patchy sleet possible':
-				return <Icon.SnowRain width={width} />
-				break
-			case 'Patchy freezing drizzle possible':
-				return <Icon.NightSnow width={width} />
-				break
-			case 'Thundery outbreaks possible':
-				return <Icon.Thunder width={width} />
-				break
-			case 'Blowing snow':
-				return <Icon.NightSnow width={width} />
-				break
-			case 'Blizzard':
-				return <Icon.NightSnow width={width} />
-				break
-			case 'Fog':
-				return <Icon.Fog width={width} />
-				break
-			case 'Freezing fog':
-				return <Icon.Fog width={width} />
-				break
-			case 'Patchy light rain':
-				return <Icon.NightRain width={width} />
-				break
-			case 'Light rain':
-				return <Icon.NightRain width={width} />
-				break
-			case 'Moderate rain at times':
-				return <Icon.NightRain width={width} />
-				break
-			case 'Moderate rain':
-				return <Icon.NightRain width={width} />
-				break
-			case 'Heavy rain at times':
-				return <Icon.NightRain width={width} />
-				break
-			case 'Heavy rain':
-				return <Icon.NightRain width={width} />
-				break
-			case 'Light freezing rain':
-				return <Icon.SnowRain width={width} />
-				break
-			case 'Moderate or heavy freezing rain':
-				return <Icon.SnowRain width={width} />
-				break
-			case 'Light sleet':
-				return <Icon.SnowRain width={width} />
-				break
-			case 'Moderate or heavy sleet':
-				return <Icon.SnowRain width={width} />
-				break
-			case 'Patchy light snow':
-				return <Icon.NightSnow width={width} />
-				break
-			case 'Light snow':
-				return <Icon.NightSnow width={width} />
-				break
-			case 'Patchy moderate snow':
-				return <Icon.NightSnow width={width} />
-				break
-			case 'Moderate snow':
-				return <Icon.NightSnow width={width} />
-				break
-			case 'Patchy heavy snow':
-				return <Icon.NightSnow width={width} />
-				break
-			case 'Heavy snow':
-				return <Icon.NightSnow width={width} />
-				break
-			case 'Ice pellets':
-				return <Icon.NightSnow width={width} />
-				break
-			case 'Light rain shower':
-				return <Icon.NightRain width={width} />
-				break
-			case 'Moderate or heavy rain shower':
-				return <Icon.NightRain width={width} />
-				break
-			case 'Torrential rain shower':
-				return <Icon.NightRain width={width} />
-				break
-			case 'Light sleet showers':
-				return <Icon.NightSnow width={width} />
-				break
-			case 'Moderate or heavy sleet showers':
-				return <Icon.NightSnow width={width} />
-				break
-			case 'Light snow showers':
-				return <Icon.SnowRain width={width} />
-				break
-			case 'Moderate or heavy snow showers':
-				return <Icon.NightSnow width={width} />
-				break
-			case 'Light showers of ice pellets':
-				return <Icon.SnowRain width={width} />
-				break
-			case 'Moderate or heavy showers of ice pellets ':
-				return <Icon.SnowRain width={width} />
-				break
-			case 'Patchy light rain with thunder ':
-				return <Icon.HeavyrainStorm width={width} />
-				break
-			case 'Moderate or heavy rain with thunder ':
-				return <Icon.HeavyrainStorm width={width} />
-				break
-			case 'Patchy light snow with thunder ':
-				return <Icon.SnowStorm width={width} />
-				break
-			case 'Moderate or heavy snow with thunder':
-				return <Icon.SnowStorm width={width} />
-				break
-			default:
-				return <Icon.NightClear width={width} />
-				break
-		}
+export const getWeatherIcon = (weather, width) => {
+	switch (weather) {
+		case '01d':
+			return <Icon.SunnyClear width={width} />
+			break
+		case '01n':
+			return <Icon.NightClear width={width} />
+			break
+		case '02d':
+			return <Icon.SunnyCloudyless width={width} />
+			break
+		case '02n':
+			return <Icon.NightCloudyless width={width} />
+			break
+		case '03d':
+			return <Icon.Cloudy width={width} />
+			break
+		case '03n':
+			return <Icon.NightCloudy width={width} />
+			break
+		case '04d':
+			return <Icon.Cloudy width={width} />
+			break
+		case '04n':
+			return <Icon.NightCloudy width={width} />
+			break
+		case '09d':
+			return <Icon.Rain width={width} />
+			break
+		case '09n':
+			return <Icon.NightRain width={width} />
+			break
+		case '10d':
+			return <Icon.Rain width={width} />
+			break
+		case '10n':
+			return <Icon.NightRain width={width} />
+			break
+		case '11d':
+			return <Icon.Thunder width={width} />
+			break
+		case '11n':
+			return <Icon.Thunder width={width} />
+			break
+		case '13d':
+			return <Icon.Snow width={width} />
+			break
+		case '13n':
+			return <Icon.NightSnow width={width} />
+			break
+		case '50d':
+			return <Icon.Fog width={width} />
+			break
+		case '50n':
+			return <Icon.Fog width={width} />
+			break
 	}
 }

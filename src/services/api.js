@@ -2,7 +2,6 @@ import axios from 'axios'
 
 // const API_KEY = 'ce5873f95fb84efab81122156230805'
 const API_KEY = '1e187fa330b57996189c96497a6fae94'
-const API_KEY_GEO = '8834fdcd896e483ebb4297fb7757e842'
 
 export const getLocation = async (query) => {
 	return await axios
@@ -11,14 +10,15 @@ export const getLocation = async (query) => {
 		)
 		.then(async ({ data }) => {
 			const { lat, lon } = data[0]
-			const forecast = await getForecastWeather(lat, lon)
-			console.log(forecast)
-			return forecast
+			console.log(data)
+			const weather = await getWeather(lat, lon)
+			console.log(weather)
+			return { city: data[0].name, ...weather }
 		})
 }
 
-const getForecastWeather = async (lat, lon) => {
-	return axios
+const getWeather = async (lat, lon) => {
+	return await axios
 		.get(
 			`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=minutely&units=metric&appid=${API_KEY}`
 		)
@@ -26,9 +26,26 @@ const getForecastWeather = async (lat, lon) => {
 }
 
 export const getUserLocation = async () => {
-	return await axios
-		.get(`https://api.geoapify.com/v1/ipinfo?&apiKey=${API_KEY_GEO}`)
-		.then((res) => res.data.city.name)
+	let lat
+	let lon
+	let getLocationPromise = new Promise((resolve, reject) => {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(pos => {
+				lat = pos.coords.latitude
+				lon = pos.coords.longitude
+
+				resolve({lat: lat, lon: lon})
+			})
+		} else {
+			reject('Your browser doesn`t support geolocation API')
+		}
+	})
+
+	return await getLocationPromise.then(async location => {
+		return await axios.get(
+			`http://api.openweathermap.org/geo/1.0/reverse?lat=${location.lat}&lon=${location.lon}&limit=5&appid=${API_KEY}`
+		).then(({data}) => data[0].name)
+	})
 }
 
 let controller

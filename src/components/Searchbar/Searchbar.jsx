@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import PropTypes, { func } from 'prop-types'
 import { AsyncPaginate } from 'react-select-async-paginate'
-import { getCities } from '../../services/api'
+import { getCities, getUserLocation } from '../../services/api'
 import { Search, Target } from '../Icons'
 import {
 	SearchField,
@@ -9,9 +9,8 @@ import {
 	SubmitButton,
 	TargetButton,
 } from './Searchbar.styled'
-import axios from 'axios'
 
-const Searchbar = ({ onSearch, getUserCity }) => {
+const Searchbar = ({ onSearch }) => {
 	const [query, setQuery] = useState('')
 	// const [citiesAutocomplete, setCitiesAutocomplete] = useState([])
 
@@ -35,11 +34,19 @@ const Searchbar = ({ onSearch, getUserCity }) => {
 				onSearch(query)
 			}}
 		>
-			<SearchField type="text" onChange={e => setQuery(e.target.value)}/>
-			<SubmitButton type="submit">
+			<SearchField type="text" onChange={(e) => setQuery(e.target.value)} />
+			<SubmitButton key="submit" type="submit">
 				<Search width={17} />
 			</SubmitButton>
-			<TargetButton type="button" onClick={() => getUserCity()}>
+			<TargetButton
+				key="button"
+				type="button"
+				onClick={async () => {
+					const city = await getUserLocation()
+					console.log(city)
+					onSearch(city)
+				}}
+			>
 				<Target width={17} />
 			</TargetButton>
 		</SearchbarWrapper>

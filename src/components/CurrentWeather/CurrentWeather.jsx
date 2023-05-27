@@ -16,25 +16,25 @@ import {
 import { Location, Sunset, Sunrise, Droplet } from '../Icons'
 
 const CurrentWeather = ({
-	weather: { current, daily, hourly, timezone },
+	weather: { city, current, timezone },
 	formatToLocalTime,
 	measure,
 }) => {
 	return (
 		<>
 			<LocationWrapper>
-				{/* <LocationText>
+				<LocationText>
 					<IconWrapper>
 						<Location width="27" />
 					</IconWrapper>
-					{location.country}, {location.name}
-				</LocationText> */}
+					{city}
+				</LocationText>
 				<LocationText>
 					Local time: {formatToLocalTime(current.dt, timezone)}
 				</LocationText>
 			</LocationWrapper>
 			<CurrentWeatherIconWrapper>
-				{/* <div>{getWeatherIcon(current.condition.text, current.is_day)}</div> */}
+				<div>{getWeatherIcon(current.weather[0].icon)}</div>
 			</CurrentWeatherIconWrapper>
 			<SolarCycle>
 				<Text>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getLocation, getUserLocation } from '../services/api'
+import { getLocation } from '../services/api'
 import './App.scss'
 import Sidebar from './Sidebar'
 import ForecastWeather from './ForecastWeather'
@@ -64,7 +64,6 @@ const App = () => {
 				formatToLocalTime={formatToLocalTime}
 				onSearch={setQuery}
 				isLoading={isLoading}
-				getUserCity={getUserCity}
 				measure={measure}
 				toggleMeasure={setMeasure}
 			/>

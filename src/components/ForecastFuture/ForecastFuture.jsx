@@ -23,7 +23,7 @@ const ForecastFuture = ({ weather: { daily }, measure }) => {
 			{daily.slice(1, 4).map(({ dt, weather, temp, humidity }) => (
 				<ForecastFutureItem key={dt}>
 					<WeatherIconWrapper>
-						<div>{getWeatherIcon(weather[0].main, true, 150)}</div>
+						<div>{getWeatherIcon(weather[0].icon, 150)}</div>
 					</WeatherIconWrapper>
 					<div>
 						<Title size="30">{getDayOfWeek(dt)}</Title>
