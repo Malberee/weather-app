@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { getWeatherIcon } from '../../services/getWeatherIcon'
 import Title from '../Title'
+import moment from 'moment'
 import IconWrapper from '../IconWrapper'
 import {
 	CurrentWeatherWrapper,
@@ -16,10 +17,12 @@ import {
 import { Location, Sunset, Sunrise, Droplet } from '../Icons'
 
 const CurrentWeather = ({
-	weather: { city, current, timezone },
+	weather: { location, current, forecast },
 	formatToLocalTime,
 	measure,
 }) => {
+const convertTime12to24 = (time12h) => moment(time12h, ['h:mm A']).format('HH:mm')
+
 	return (
 		<>
 			<LocationWrapper>
@@ -27,37 +30,36 @@ const CurrentWeather = ({
 					<IconWrapper>
 						<Location width="27" />
 					</IconWrapper>
-					{city}
+					{location.name}
 				</LocationText>
 				<LocationText>
-					Local time: {formatToLocalTime(current.dt, timezone)}
+					Local time: {formatToLocalTime(location.localtime)}
 				</LocationText>
 			</LocationWrapper>
 			<CurrentWeatherIconWrapper>
-				<div>{getWeatherIcon(current.weather[0].icon)}</div>
+				<div>{getWeatherIcon(current.condition.text, current.is_day)}</div>
 			</CurrentWeatherIconWrapper>
 			<SolarCycle>
 				<Text>
 					<IconWrapper>
 						<Sunrise width="27" />
 					</IconWrapper>
-					{formatToLocalTime(current.sunrise, timezone)}
+					{convertTime12to24(forecast[0].astro.sunrise)}
 				</Text>
 				<Text>
 					<IconWrapper>
 						<Sunset width="27" />
 					</IconWrapper>
-					{formatToLocalTime(current.sunset, timezone)}
+					{convertTime12to24(forecast[0].astro.sunset)}
 				</Text>
 			</SolarCycle>
 			<WeatherWrapper>
 				<Temp>
 					{measure === 'C'
-						? ` ${Math.round(current.temp)}°C`
-						: ` ${Math.round((current.temp * 9) / 5 + 32)}°F`}
-				
+						? ` ${Math.round(current.temp_c)}°C`
+						: ` ${Math.round(current.temp_f)}°F`}
 				</Temp>
-				<Title size="30">{current.weather[0].main}</Title>
+				<Title size="30">{current.condition.text}</Title>
 				<Text>
 					<IconWrapper>
 						<Droplet width="27" />

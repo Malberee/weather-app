@@ -1,7 +1,7 @@
-import React from 'react'
+import {useState} from 'react'
 import PropTypes from 'prop-types'
-import ForecastFuture from '../ForecastFuture'
-import ForecastDay from '../ForecastDay/ForecastDay'
+import ForecastDaily from '../ForecastDaily'
+import ForecastHourly from '../ForecastHourly'
 import { Droplet } from '../Icons'
 import {
 	ForecastWeatherWrapper,
@@ -15,15 +15,24 @@ const ForecastWeather = ({
 	formatToLocalTime,
 	measure,
 	isLoading,
-}) => (
+}) => {
+	const [selectedDay, setSelectedDay] = useState(0)
+
+	return (
 	<ForecastWeatherWrapper>
 		{weather && (
 			<>
 				{!isLoading ? (
 					<>
-						<ForecastFuture weather={weather} measure={measure} />
-						<ForecastDay
-							weather={weather}
+						<ForecastDaily
+							forecast={weather.forecast}
+							selectedDay={selectedDay}
+							setSelectedDay={setSelectedDay}
+							measure={measure}
+						/>
+						<ForecastHourly
+							forecast={weather.forecast}
+							selectedDay={selectedDay}
 							formatToLocalTime={formatToLocalTime}
 							measure={measure}
 						/>
@@ -37,7 +46,7 @@ const ForecastWeather = ({
 			</>
 		)}
 	</ForecastWeatherWrapper>
-)
+)}
 
 ForecastWeather.propTypes = {}
 

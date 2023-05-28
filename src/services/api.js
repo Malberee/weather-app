@@ -1,56 +1,27 @@
 import axios from 'axios'
 
-// const API_KEY = 'ce5873f95fb84efab81122156230805'
-const API_KEY = '1e187fa330b57996189c96497a6fae94'
+const API_KEY = 'ce5873f95fb84efab81122156230805'
+const GEO_API_KEY = '8834fdcd896e483ebb4297fb7757e842'
 
-export const getLocation = async (query) => {
+export const getWeather = async (query) => {
 	return await axios
 		.get(
-			`https://api.openweathermap.org/geo/1.0/direct?q=${query}&appid=${API_KEY}`
+			`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${query}&days=3&aqi=no&alerts=no
+`
 		)
-		.then(async ({ data }) => {
-			if (!data.length) {
-				console.log('Not found')
-				return
+		.then(({ data: { location, current, forecast } }) => {
+			return {
+				location: location,
+				current: current,
+				forecast: forecast.forecastday,
 			}
-			const { lat, lon } = data[0]
-			console.log(data)
-			const weather = await getWeather(lat, lon)
-			console.log(weather)
-			return { city: data[0].name, ...weather }
 		})
 }
 
-const getWeather = async (lat, lon) => {
-	return await axios
-		.get(
-			`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=minutely&units=metric&appid=${API_KEY}`
-		)
-		.then(({ data }) => data)
-}
-
-export const getUserLocation = async () => {
-	let lat
-	let lon
-	let getLocationPromise = new Promise((resolve, reject) => {
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(pos => {
-				lat = pos.coords.latitude
-				lon = pos.coords.longitude
-
-				resolve({lat: lat, lon: lon})
-			})
-		} else {
-			reject('Your browser doesn`t support geolocation API')
-		}
-	})
-
-	return await getLocationPromise.then(async location => {
-		return await axios.get(
-			`https://api.openweathermap.org/geo/1.0/reverse?lat=${location.lat}&lon=${location.lon}&limit=5&appid=${API_KEY}`
-		).then(({data}) => data[0].name)
-	})
-}
+export const getUserLocation = async () =>
+	await axios
+		.get(`https://api.geoapify.com/v1/ipinfo?&apiKey=${GEO_API_KEY}`)
+		.then((res) => res.data.city.name)
 
 let controller
 

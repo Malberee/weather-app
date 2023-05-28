@@ -1,17 +1,17 @@
 import styled from 'styled-components'
 import Carousel from 'react-carousel-elasticss'
 
-export const ForecastDayWrapper = styled.div`
+export const ForecastHourlyWrapper = styled.div`
 	/* padding-top: 35px; */
 	overflow: hidden;
 `
 
-export const ForecastDayContent = styled.div`
+export const ForecastHourlyContent = styled.div`
 	margin: 0 -8px;
 	text-align: center;
 `
 
-export const ForecastDayList = styled(Carousel)`
+export const ForecastHourlyList = styled(Carousel)`
 	margin-top: 35px;
 
 	.rec-slider-container {
@@ -19,7 +19,7 @@ export const ForecastDayList = styled(Carousel)`
 	}
 `
 
-export const ForecastDayItem = styled.li`
+export const ForecastHourlyItem = styled.li`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;

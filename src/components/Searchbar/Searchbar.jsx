@@ -35,11 +35,10 @@ const Searchbar = ({ onSearch }) => {
 			}}
 		>
 			<SearchField type="text" onChange={(e) => setQuery(e.target.value)} />
-			<SubmitButton key="submit" type="submit">
+			<SubmitButton type="submit">
 				<Search width={17} />
 			</SubmitButton>
 			<TargetButton
-				key="button"
 				type="button"
 				onClick={async () => {
 					const city = await getUserLocation()

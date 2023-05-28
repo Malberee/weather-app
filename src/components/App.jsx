@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
-import moment from 'moment-timezone'
-import { getLocation } from '../services/api'
+import moment from 'moment'
+import ukLocale from 'moment/locale/uk'
+import { getWeather } from '../services/api'
 import './App.scss'
 import Sidebar from './Sidebar'
 import ForecastWeather from './ForecastWeather'
@@ -17,8 +18,10 @@ const App = () => {
 	)
 	const [isLoading, setIsLoading] = useState(false)
 
-	const formatToLocalTime = (secs, timezone) =>
-		moment.unix(secs).tz(`${timezone}`).format('HH:mm')
+	const formatToLocalTime = (time) => {
+		moment.locale('uk')
+		return moment(time).format('HH:mm')
+	}
 
 	useEffect(() => {
 		localStorage.setItem('measure', measure)
@@ -36,16 +39,15 @@ const App = () => {
 
 	useEffect(() => {
 		async function fetchData() {
-			const response = await getLocation(query)
-			console.log(response)
-
-			if (response) {
+			try {
+				const response = await getWeather(query)
+				console.log(response)
 				setWeather(response)
-			} else {
-				alert('Not found')
+			} catch (err) {
+				alert(err)
+			} finally {
+				setIsLoading(false)
 			}
-
-			setIsLoading(false)
 		}
 
 		if (query.trim() !== '') {
