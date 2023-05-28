@@ -9,6 +9,10 @@ export const getLocation = async (query) => {
 			`https://api.openweathermap.org/geo/1.0/direct?q=${query}&appid=${API_KEY}`
 		)
 		.then(async ({ data }) => {
+			if (!data.length) {
+				console.log('Not found')
+				return
+			}
 			const { lat, lon } = data[0]
 			console.log(data)
 			const weather = await getWeather(lat, lon)
@@ -43,7 +47,7 @@ export const getUserLocation = async () => {
 
 	return await getLocationPromise.then(async location => {
 		return await axios.get(
-			`http://api.openweathermap.org/geo/1.0/reverse?lat=${location.lat}&lon=${location.lon}&limit=5&appid=${API_KEY}`
+			`https://api.openweathermap.org/geo/1.0/reverse?lat=${location.lat}&lon=${location.lon}&limit=5&appid=${API_KEY}`
 		).then(({data}) => data[0].name)
 	})
 }

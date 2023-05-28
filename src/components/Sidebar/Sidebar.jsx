@@ -16,47 +16,41 @@ const Sidebar = ({
 	getUserCity,
 	measure,
 	toggleMeasure,
-}) => {
-	// const [checked, setChecked] = useState(
-	// 	localStorage.getItem('measure') === 'F' ? true : false
-	// )
+}) => (
+	<SidebarWrapper>
+		<Searchbar onSearch={onSearch} getUserCity={getUserCity} />
 
-	return (
-		<SidebarWrapper>
-			<Searchbar onSearch={onSearch} getUserCity={getUserCity} />
+		{weather && (
+			<div>
+				{!isLoading ? (
+					<CurrentWeather
+						weather={weather}
+						formatToLocalTime={formatToLocalTime}
+						measure={measure}
+					/>
+				) : (
+					<ThreeDots
+						wrapperStyle={{ display: 'flex', justifyContent: 'center' }}
+						color="#fff"
+					/>
+				)}
+			</div>
+		)}
 
-			{weather && (
-				<div>
-					{!isLoading ? (
-						<CurrentWeather
-							weather={weather}
-							formatToLocalTime={formatToLocalTime}
-							measure={measure}
-						/>
-					) : (
-						<ThreeDots
-							wrapperStyle={{ display: 'flex', justifyContent: 'center' }}
-							color="#fff"
-						/>
-					)}
-				</div>
-			)}
-
-			<ToggleTempMeasureContainer>
-				<input
-					type="checkbox"
-					defaultChecked={measure === 'C' ? false : true}
-					onChange={() =>
-						toggleMeasure((prevState) => (prevState === 'C' ? 'F' : 'C'))
-					}
-				/>
-				<ToggleTempMeasure>{measure}</ToggleTempMeasure>
-				<p>C</p>
-				<p>F</p>
-			</ToggleTempMeasureContainer>
-		</SidebarWrapper>
-	)
-}
+		<ToggleTempMeasureContainer>
+			<input
+				type="checkbox"
+				defaultChecked={measure === 'C' ? false : true}
+				onChange={() =>
+					toggleMeasure((prevState) => (prevState === 'C' ? 'F' : 'C'))
+				}
+			/>
+			<ToggleTempMeasure>{measure}</ToggleTempMeasure>
+			<p>C</p>
+			<p>F</p>
+		</ToggleTempMeasureContainer>
+	</SidebarWrapper>
+)
 
 Sidebar.propTypes = {
 	// weather: PropTypes.object.isRequired,
