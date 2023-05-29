@@ -61,7 +61,7 @@ const Searchbar = ({ onSearch }) => {
 			boxShadow: 'none',
 			borderRadius: '14px',
 			minHeight: '33px',
-			cursor: 'pointer',
+			cursor: 'text',
 		}),
 		valueContainer: (styles) => ({
 			...styles,
@@ -112,12 +112,14 @@ const Searchbar = ({ onSearch }) => {
 				onInputChange={onInputChange}
 				onChange={setSelectedCity}
 				loadOptions={loadOptions}
-				openMenuOnClick={query ? true : false}
+				openMenuOnFocus={query ? true : false}
 				components={{
 					DropdownIndicator: () => null,
 					IndicatorSeparator: () => null,
 					LoadingIndicator: () => null,
 				}}
+				controlShouldRenderValue={false}
+				// unstyled={true}
 				styles={styles}
 			/>
 			<SubmitButton type="submit">
