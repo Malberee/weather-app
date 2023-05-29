@@ -71,13 +71,25 @@ const Searchbar = ({ onSearch }) => {
 			...styles,
 			color: 'transparent',
 		}),
-		option: (styles, { isFocused }) => ({
-			...styles,
-			backgroundColor: isFocused ? 'rgba(80, 80, 80, 0.4)' : 'transparent',
-			cursor: 'pointer',
-		}),
+		option: (styles, { isSelected, isFocused, isDisabled }) => {
+			let backgroundColor
+
+			if (isFocused) backgroundColor = 'rgba(80, 80, 80, 0.4)'
+
+			if (isSelected) backgroundColor = 'rgba(80, 80, 80, 0.4)'
+
+			if (isSelected) backgroundColor = 'rgba(80, 80, 80, 0.4)'
+			return {
+				...styles,
+				backgroundColor: backgroundColor,
+				':active': {
+					backgroundColor: (backgroundColor = 'rgba(80, 80, 80, 0.6)'),
+				},
+			}
+		},
 		menu: (styles) => ({
 			...styles,
+			overflow: 'hidden',
 			backgroundColor: 'rgba(40, 40, 40, 0.3)',
 			backdropFilter: 'blur(2px)',
 			border: '0.5px solid #545454',
@@ -93,21 +105,21 @@ const Searchbar = ({ onSearch }) => {
 			}}
 		>
 			<AsyncPaginate
-				styles={styles}
+				placeholder="City"
+				noOptionsMessage={() => 'Nothing was found.'}
+				debounceTimeout={500}
+				inputValue={query}
+				onInputChange={onInputChange}
+				onChange={setSelectedCity}
+				loadOptions={loadOptions}
 				openMenuOnClick={query ? true : false}
 				components={{
 					DropdownIndicator: () => null,
 					IndicatorSeparator: () => null,
 					LoadingIndicator: () => null,
 				}}
-				placeholder="City"
-				debounceTimeout={500}
-				inputValue={query}
-				onInputChange={onInputChange}
-				onChange={setSelectedCity}
-				loadOptions={loadOptions}
+				styles={styles}
 			/>
-			{/* <SearchField type="text" onChange={(e) => setQuery(e.target.value)} /> */}
 			<SubmitButton type="submit">
 				<Search width={17} />
 			</SubmitButton>
