@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import moment from 'moment'
 import ukLocale from 'moment/locale/uk'
-import { getWeather } from '../services/api'
+import { getWeather, getUserLocation } from '../services/api'
 import './App.scss'
 import Sidebar from './Sidebar'
 import ForecastWeather from './ForecastWeather'
@@ -28,13 +28,13 @@ const App = () => {
 	}, [measure])
 
 	useEffect(() => {
-		// async function fetchData() {
-		// 	const userCity = await getUserLocation()
-		// 	setQuery(userCity)
-		// setIsLoading(false)
-		// }
-		// fetchData()
-		// setIsLoading(true)
+		async function fetchData() {
+			const userCity = await getUserLocation()
+			setQuery(userCity)
+			setIsLoading(false)
+		}
+		fetchData()
+		setIsLoading(true)
 	}, [])
 
 	useEffect(() => {
