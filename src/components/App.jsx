@@ -29,9 +29,14 @@ const App = () => {
 
 	useEffect(() => {
 		async function fetchData() {
-			const userCity = await getUserLocation()
-			setQuery(userCity)
-			setIsLoading(false)
+			try {
+				const userCity = await getUserLocation()
+				setQuery(userCity)
+			} catch (err) {
+				console.log('Еррор, сори. ')
+			} finally {
+				setIsLoading(false)
+			}
 		}
 		fetchData()
 		setIsLoading(true)
