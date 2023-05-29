@@ -22,10 +22,12 @@ const ForecastHourly = ({
 	formatToLocalTime,
 	measure,
 }) => {
-	const getInitialFirstItem = () =>
-		forecast[0].hour.findIndex(
+	const getInitialFirstItem = () => {
+		const index = forecast[0].hour.findIndex(
 			(hour) => moment(hour.time).hour() > moment().hour()
 		)
+		return index < 1 ? 0 : index
+	}
 
 	const getHour = (time) => {
 		if (moment(time).hour() === moment().hour() && selectedDay === 0)

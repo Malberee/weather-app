@@ -12,20 +12,78 @@ import {
 
 const Searchbar = ({ onSearch }) => {
 	const [query, setQuery] = useState('')
-	// const [citiesAutocomplete, setCitiesAutocomplete] = useState([])
+	const [selectedCity, setSelectedCity] = useState()
 
-	// useEffect(() => {
-	// 	console.log(citiesAutocomplete)
-	// }, [citiesAutocomplete])
+	const loadOptions = async (value) =>
+		value ? await getCities(value) : { options: [] }
 
-	// useEffect(() => {
-	// 	async function fetchData() {
-	// 		const cities = await getCities(query)
-	// 		setCitiesAutocomplete(cities)
-	// 	}
+	const onInputChange = (inputValue, action) => {
+		if (action.action !== 'input-blur' && action.action !== 'menu-close') {
+			setQuery(inputValue)
+		}
+	}
 
-	// 	fetchData()
-	// }, [query])
+	useEffect(() => {
+		if (selectedCity) {
+			console.log(selectedCity.value)
+			onSearch(selectedCity.value)
+		}
+	}, [selectedCity])
+
+	const styles = {
+		placeholder: (styles) => ({
+			...styles,
+			fontSize: '14px',
+			textAlign: 'left',
+			padding: '0 33px',
+			margin: '0',
+			color: 'rgba(255, 255, 255, 0.35)',
+		}),
+		input: (styles) => ({
+			...styles,
+			fontSize: '14px',
+			padding: '0 33px',
+			margin: '0',
+			color: 'white',
+			width: 'auto',
+		}),
+		control: (styles) => ({
+			...styles,
+			backgroundColor: 'rgba(40, 40, 40, 0.3)',
+			backdropFilter: 'blur(2px)',
+			border: '0.5px solid #545454',
+			':hover': {
+				border: '0.5px solid #545454',
+			},
+			':focus': {
+				border: '0.5px solid #545454',
+			},
+			boxShadow: 'none',
+			borderRadius: '14px',
+			minHeight: '33px',
+			cursor: 'pointer',
+		}),
+		valueContainer: (styles) => ({
+			...styles,
+			padding: '0',
+		}),
+		singleValue: (styles) => ({
+			...styles,
+			color: 'transparent',
+		}),
+		option: (styles, { isFocused }) => ({
+			...styles,
+			backgroundColor: isFocused ? 'rgba(80, 80, 80, 0.4)' : 'transparent',
+			cursor: 'pointer',
+		}),
+		menu: (styles) => ({
+			...styles,
+			backgroundColor: 'rgba(40, 40, 40, 0.3)',
+			backdropFilter: 'blur(2px)',
+			border: '0.5px solid #545454',
+			borderRadius: '14px',
+		}),
+	}
 
 	return (
 		<SearchbarWrapper
@@ -34,7 +92,22 @@ const Searchbar = ({ onSearch }) => {
 				onSearch(query)
 			}}
 		>
-			<SearchField type="text" onChange={(e) => setQuery(e.target.value)} />
+			<AsyncPaginate
+				styles={styles}
+				openMenuOnClick={query ? true : false}
+				components={{
+					DropdownIndicator: () => null,
+					IndicatorSeparator: () => null,
+					LoadingIndicator: () => null,
+				}}
+				placeholder="City"
+				debounceTimeout={500}
+				inputValue={query}
+				onInputChange={onInputChange}
+				onChange={setSelectedCity}
+				loadOptions={loadOptions}
+			/>
+			{/* <SearchField type="text" onChange={(e) => setQuery(e.target.value)} /> */}
 			<SubmitButton type="submit">
 				<Search width={17} />
 			</SubmitButton>

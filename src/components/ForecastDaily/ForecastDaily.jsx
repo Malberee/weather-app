@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import moment from 'moment-timezone'
+import moment from 'moment'
 import { Droplet } from '../Icons'
 import { getWeatherIcon } from '../../services/getWeatherIcon'
 import Title from '../Title'

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { AsyncPaginate } from 'react-select-async-paginate'
 
 export const SearchbarWrapper = styled.form`
 	position: relative;
@@ -26,34 +27,24 @@ export const TargetButton = styled.button`
 	height: 16px;
 `
 
-export const SearchField = styled.input`
-	/* .wrapper {
-		&:hover,
-		&:focus-within {
-			box-shadow: none;
-		}
+export const SearchField = styled(AsyncPaginate)`
+	/* div {
+		background: rgba(40, 40, 40, 0.3);
+		border: 0.5px solid #545454;
+		backdrop-filter: blur(2px);
+		color: white;
 		div {
-			ul {
-				li {
-					cursor: pointer;
-				}
-			}
+			padding: 8px;
+			padding-left: 29px;
 		}
 	} */
 
-	background: rgba(40, 40, 40, 0.3);
-	border: 0.5px solid #545454;
-	backdrop-filter: blur(2px);
-	color: white;
-
-	border-radius: 14px;
+	/* border-radius: 14px;
 	width: 100%;
 	height: 33px;
-	box-sizing: border-box;
-	padding: 8px;
-	padding-left: 29px;
+	box-sizing: border-box; */
 
-	&:focus {
+	/* &:focus {
 		outline: transparent;
 	}
 
@@ -63,7 +54,7 @@ export const SearchField = styled.input`
 	&:-webkit-autofill:active {
 		-webkit-transition: 'color 9999s ease-out, background-color 9999s ease-out';
 		-webkit-transition-delay: 9999s;
-	}
+	} */
 `
 
 export const AutocompleteItem = styled.span`
